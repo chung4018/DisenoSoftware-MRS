@@ -164,7 +164,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Usuarios\AdministradorComercio.cs" />
+    <Compile Include="Models\Usuarios\AdministradorPlataforma.cs" />
+    <Compile Include="Models\Usuarios\Comun.cs" />
+    <Compile Include="Models\Usuarios\Condicion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Usuarios\Partner.cs" />
+    <Compile Include="Models\Usuarios\RolUsuario.cs" />
+    <Compile Include="Models\Usuarios\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -214,6 +221,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
