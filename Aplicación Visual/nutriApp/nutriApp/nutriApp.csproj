@@ -164,6 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Interfaces\ConexionBD.cs" />
     <Compile Include="Models\Usuarios\AdministradorComercio.cs" />
     <Compile Include="Models\Usuarios\AdministradorPlataforma.cs" />
     <Compile Include="Models\Usuarios\Comun.cs" />
