@@ -1,0 +1,53 @@
+@model IEnumerable<nutriApp3.Models.BITACORA_PRODUCTOS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ID_USR_RESPOSABLE
+        </th>
+        <th>
+            TIPO_PROD_ANTERIOR
+        </th>
+        <th>
+            FECHA_MODIFICACION
+        </th>
+        <th>
+            ACCION_REALIZADA
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_BITACORA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_BITACORA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_BITACORA })
+        </td>
+        <td>
+			@item.ID_USR_RESPOSABLE
+        </td>
+        <td>
+			@String.Format("{0:F}", item.TIPO_PROD_ANTERIOR)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.FECHA_MODIFICACION)
+        </td>
+        <td>
+			@item.ACCION_REALIZADA
+        </td>
+    </tr>
+}
+
+</table>
+
+

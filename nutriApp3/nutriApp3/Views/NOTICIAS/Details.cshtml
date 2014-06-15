@@ -1,0 +1,38 @@
+@model nutriApp3.Models.NOTICIAS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>NOTICIAS</legend>
+
+    <div class="display-label">ID_USUARIO_CREADOR</div>
+    <div class="display-field">@Model.ID_USUARIO_CREADOR</div>
+
+    <div class="display-label">ID_TIPO_INFORMACION</div>
+    <div class="display-field">@String.Format("{0:F}", Model.ID_TIPO_INFORMACION)</div>
+
+    <div class="display-label">TITULO</div>
+    <div class="display-field">@Model.TITULO</div>
+
+    <div class="display-label">CUERPO_NOTICIA</div>
+    <div class="display-field">@Model.CUERPO_NOTICIA</div>
+
+    <div class="display-label">USUARIOS</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.USUARIOS).ToString()</div>
+
+    <div class="display-label">TIPO_INFORMACION</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.TIPO_INFORMACION).ToString()</div>
+
+    <div class="display-label">CONDICION</div>
+    <div class="display-field">@(Model.CONDICION == null ? "None" : Model.CONDICION.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID_NOTICIA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

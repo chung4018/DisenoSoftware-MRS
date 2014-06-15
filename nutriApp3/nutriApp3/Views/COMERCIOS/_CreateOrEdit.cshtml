@@ -1,0 +1,60 @@
+@model nutriApp3.Models.COMERCIOS
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ID_TIPO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ID_TIPO)
+    @Html.ValidationMessageFor(model => model.ID_TIPO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ID_USUARIO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ID_USUARIO)
+    @Html.ValidationMessageFor(model => model.ID_USUARIO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NOMBRE)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NOMBRE)
+    @Html.ValidationMessageFor(model => model.NOMBRE)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.LATITUD)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.LATITUD)
+    @Html.ValidationMessageFor(model => model.LATITUD)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.LONGUITUD)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.LONGUITUD)
+    @Html.ValidationMessageFor(model => model.LONGUITUD)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TELEFONO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TELEFONO)
+    @Html.ValidationMessageFor(model => model.TELEFONO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CORREO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CORREO)
+    @Html.ValidationMessageFor(model => model.CORREO)
+</div>
+

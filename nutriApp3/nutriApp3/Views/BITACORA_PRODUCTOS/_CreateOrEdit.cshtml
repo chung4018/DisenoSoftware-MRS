@@ -1,0 +1,36 @@
+@model nutriApp3.Models.BITACORA_PRODUCTOS
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ID_USR_RESPOSABLE)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ID_USR_RESPOSABLE)
+    @Html.ValidationMessageFor(model => model.ID_USR_RESPOSABLE)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TIPO_PROD_ANTERIOR)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TIPO_PROD_ANTERIOR)
+    @Html.ValidationMessageFor(model => model.TIPO_PROD_ANTERIOR)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FECHA_MODIFICACION)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FECHA_MODIFICACION)
+    @Html.ValidationMessageFor(model => model.FECHA_MODIFICACION)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ACCION_REALIZADA)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ACCION_REALIZADA)
+    @Html.ValidationMessageFor(model => model.ACCION_REALIZADA)
+</div>
+

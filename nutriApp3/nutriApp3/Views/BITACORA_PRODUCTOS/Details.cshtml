@@ -1,0 +1,29 @@
+@model nutriApp3.Models.BITACORA_PRODUCTOS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>BITACORA_PRODUCTOS</legend>
+
+    <div class="display-label">ID_USR_RESPOSABLE</div>
+    <div class="display-field">@Model.ID_USR_RESPOSABLE</div>
+
+    <div class="display-label">TIPO_PROD_ANTERIOR</div>
+    <div class="display-field">@String.Format("{0:F}", Model.TIPO_PROD_ANTERIOR)</div>
+
+    <div class="display-label">FECHA_MODIFICACION</div>
+    <div class="display-field">@String.Format("{0:g}", Model.FECHA_MODIFICACION)</div>
+
+    <div class="display-label">ACCION_REALIZADA</div>
+    <div class="display-field">@Model.ACCION_REALIZADA</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID_BITACORA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

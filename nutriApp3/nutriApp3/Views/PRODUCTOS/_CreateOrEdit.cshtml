@@ -1,0 +1,36 @@
+@model nutriApp3.Models.PRODUCTOS
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ID_TIPO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ID_TIPO)
+    @Html.ValidationMessageFor(model => model.ID_TIPO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TIPO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TIPO)
+    @Html.ValidationMessageFor(model => model.TIPO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NOMBRE)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NOMBRE)
+    @Html.ValidationMessageFor(model => model.NOMBRE)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.INFORMACION_ADICIONAL)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.INFORMACION_ADICIONAL)
+    @Html.ValidationMessageFor(model => model.INFORMACION_ADICIONAL)
+</div>
+

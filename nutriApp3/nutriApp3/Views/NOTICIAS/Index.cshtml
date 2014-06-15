@@ -1,0 +1,71 @@
+@model IEnumerable<nutriApp3.Models.NOTICIAS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ID_USUARIO_CREADOR
+        </th>
+        <th>
+            ID_TIPO_INFORMACION
+        </th>
+        <th>
+            TITULO
+        </th>
+        <th>
+            CUERPO_NOTICIA
+        </th>
+        <th>
+            USUARIOS
+        </th>
+        <th>
+            TIPO_INFORMACION
+        </th>
+        <th>
+            CONDICION
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_NOTICIA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_NOTICIA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_NOTICIA })
+        </td>
+        <td>
+			@item.ID_USUARIO_CREADOR
+        </td>
+        <td>
+			@String.Format("{0:F}", item.ID_TIPO_INFORMACION)
+        </td>
+        <td>
+			@item.TITULO
+        </td>
+        <td>
+			@item.CUERPO_NOTICIA
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.USUARIOS).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.TIPO_INFORMACION).ToString()
+        </td>
+        <td>
+			@(item.CONDICION == null ? "None" : item.CONDICION.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

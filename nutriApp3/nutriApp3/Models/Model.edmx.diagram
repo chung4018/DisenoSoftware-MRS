@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c892101b12ed41e6aac667f3de7dacd3" Name="Diagrama1">
+        <EntityTypeShape EntityType="Model.BITACORA_COMERCIO" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BITACORA_NOTICIAS" Width="1.5" PointX="8.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BITACORA_PRODUCTOS" Width="1.5" PointX="8.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BITACORA_USUARIOS" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BUSQUEDAS" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMERCIOS" Width="1.5" PointX="6" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CONDICION" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NOTICIAS" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRODUCTOS" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ROLES" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIPO_COMERCIO" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIPO_INFORMACION" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TIPO_PRODUCTO" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USUARIOS" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_BUSQUEDA_USUARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TIPO_COMERCIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_NOTICIAS_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TIPO_INF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TIPO_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.BUSQUEDAXCOMERCIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.BUSQUEDAXPRODUCTOS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.NOTICIASXCONDICION" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PRODUCTOSXCOMERCIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ROLESXUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.USUARIOXCONDICION" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

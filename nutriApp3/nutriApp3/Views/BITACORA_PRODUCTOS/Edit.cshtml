@@ -1,0 +1,25 @@
+@model nutriApp3.Models.BITACORA_PRODUCTOS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>BITACORA_PRODUCTOS</legend>
+
+        @Html.HiddenFor(model => model.ID_BITACORA)
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
