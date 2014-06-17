@@ -1,0 +1,29 @@
+@model NutriApp5.Models.PRODUCTOSXCOMERCIO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PRODUCTOSXCOMERCIO</legend>
+
+    <div class="display-label">ID_COMERCIO</div>
+    <div class="display-field">@Model.ID_COMERCIO</div>
+
+    <div class="display-label">ID_PRODUCTO</div>
+    <div class="display-field">@Model.ID_PRODUCTO</div>
+
+    <div class="display-label">COMERCIOS</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.COMERCIOS).ToString()</div>
+
+    <div class="display-label">PRODUCTOS</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.PRODUCTOS).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

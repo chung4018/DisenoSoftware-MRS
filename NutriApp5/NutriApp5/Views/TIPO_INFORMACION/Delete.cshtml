@@ -1,0 +1,26 @@
+@model NutriApp5.Models.TIPO_INFORMACION
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>TIPO_INFORMACION</legend>
+
+    <div class="display-label">NOMBRE</div>
+    <div class="display-field">@Model.NOMBRE</div>
+
+    <div class="display-label">NOTICIAS</div>
+    <div class="display-field">@(Model.NOTICIAS == null ? "None" : Model.NOTICIAS.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

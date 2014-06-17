@@ -1,0 +1,42 @@
+@model nutriApp3.Models.editUserViewModel
+
+@using System.Collections.Generic;
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NOMBRE)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NOMBRE)
+    @Html.ValidationMessageFor(model => model.NOMBRE)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.APELLIDO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.APELLIDO)
+    @Html.ValidationMessageFor(model => model.APELLIDO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CORREO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CORREO)
+    @Html.ValidationMessageFor(model => model.CORREO)
+</div>
+
+<div class="editor-field">
+    @Html.LabelFor(x => x.SelectedROLES)
+    @Html.ListBoxFor(x => x.SelectedROLES, Model.AllROLES)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CONTRASENA)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CONTRASENA)
+    @Html.ValidationMessageFor(model => model.CONTRASENA)
+</div>

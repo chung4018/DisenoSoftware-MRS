@@ -1,0 +1,53 @@
+@model IEnumerable<NutriApp5.Models.CONDICION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            INFORMACION_CONDICION
+        </th>
+        <th>
+            NOTICIASXCONDICION
+        </th>
+        <th>
+            USUARIOXCONDICION
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_CONDICION }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_CONDICION }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_CONDICION })
+        </td>
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@item.INFORMACION_CONDICION
+        </td>
+        <td>
+			@(item.NOTICIASXCONDICION == null ? "None" : item.NOTICIASXCONDICION.Count.ToString())
+        </td>
+        <td>
+			@(item.USUARIOXCONDICION == null ? "None" : item.USUARIOXCONDICION.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

@@ -1,0 +1,59 @@
+@model IEnumerable<NutriApp5.Models.BUSQUEDAS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ID_USUARIO
+        </th>
+        <th>
+            FECHA_HORA
+        </th>
+        <th>
+            USUARIOS
+        </th>
+        <th>
+            BUSQUEDAXCOMERCIOS
+        </th>
+        <th>
+            BUSQUEDAXPRODUCTOS
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_BUSQUEDA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_BUSQUEDA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_BUSQUEDA })
+        </td>
+        <td>
+			@item.ID_USUARIO
+        </td>
+        <td>
+			@String.Format("{0:g}", item.FECHA_HORA)
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.USUARIOS).ToString()
+        </td>
+        <td>
+			@(item.BUSQUEDAXCOMERCIOS == null ? "None" : item.BUSQUEDAXCOMERCIOS.Count.ToString())
+        </td>
+        <td>
+			@(item.BUSQUEDAXPRODUCTOS == null ? "None" : item.BUSQUEDAXPRODUCTOS.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

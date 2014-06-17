@@ -1,0 +1,29 @@
+@model NutriApp5.Models.CONDICION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CONDICION</legend>
+
+    <div class="display-label">NOMBRE</div>
+    <div class="display-field">@Model.NOMBRE</div>
+
+    <div class="display-label">INFORMACION_CONDICION</div>
+    <div class="display-field">@Model.INFORMACION_CONDICION</div>
+
+    <div class="display-label">NOTICIASXCONDICION</div>
+    <div class="display-field">@(Model.NOTICIASXCONDICION == null ? "None" : Model.NOTICIASXCONDICION.Count.ToString())</div>
+
+    <div class="display-label">USUARIOXCONDICION</div>
+    <div class="display-field">@(Model.USUARIOXCONDICION == null ? "None" : Model.USUARIOXCONDICION.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID_CONDICION }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
