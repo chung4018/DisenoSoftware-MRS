@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="BUSQUEDAS" EntityType="Model.BUSQUEDAS" />
+    <EntitySet Name="BUSQUEDAXCOMERCIOS" EntityType="Model.BUSQUEDAXCOMERCIOS" />
+    <EntitySet Name="BUSQUEDAXPRODUCTOS" EntityType="Model.BUSQUEDAXPRODUCTOS" />
+    <EntitySet Name="COMERCIOS" EntityType="Model.COMERCIOS" />
+    <EntitySet Name="CONDICION" EntityType="Model.CONDICION" />
+    <EntitySet Name="NOTICIAS" EntityType="Model.NOTICIAS" />
+    <EntitySet Name="NOTICIASXCONDICION" EntityType="Model.NOTICIASXCONDICION" />
+    <EntitySet Name="PRODUCTOS" EntityType="Model.PRODUCTOS" />
+    <EntitySet Name="PRODUCTOSXCOMERCIO" EntityType="Model.PRODUCTOSXCOMERCIO" />
+    <EntitySet Name="ROLES" EntityType="Model.ROLES" />
+    <EntitySet Name="ROLESXUSUARIO" EntityType="Model.ROLESXUSUARIO" />
+    <EntitySet Name="TIPO_COMERCIO" EntityType="Model.TIPO_COMERCIO" />
+    <EntitySet Name="TIPO_INFORMACION" EntityType="Model.TIPO_INFORMACION" />
+    <EntitySet Name="TIPO_PRODUCTO" EntityType="Model.TIPO_PRODUCTO" />
+    <EntitySet Name="USUARIOS" EntityType="Model.USUARIOS" />
+    <EntitySet Name="USUARIOXCONDICION" EntityType="Model.USUARIOXCONDICION" />
+    <AssociationSet Name="FK_BUSQUEDA_USUARIOS" Association="Model.FK_BUSQUEDA_USUARIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="BUSQUEDAS" EntitySet="BUSQUEDAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDAXCOMERCIOS" Association="Model.FK_BUSQUEDAXCOMERCIOS">
+      <End Role="BUSQUEDAS" EntitySet="BUSQUEDAS" />
+      <End Role="BUSQUEDAXCOMERCIOS" EntitySet="BUSQUEDAXCOMERCIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDAXPRODUCTOS" Association="Model.FK_BUSQUEDAXPRODUCTOS">
+      <End Role="BUSQUEDAS" EntitySet="BUSQUEDAS" />
+      <End Role="BUSQUEDAXPRODUCTOS" EntitySet="BUSQUEDAXPRODUCTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDA_COMERCIO" Association="Model.FK_BUSQUEDA_COMERCIO">
+      <End Role="COMERCIOS" EntitySet="COMERCIOS" />
+      <End Role="BUSQUEDAXCOMERCIOS" EntitySet="BUSQUEDAXCOMERCIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDA_PRODUCTO" Association="Model.FK_BUSQUEDA_PRODUCTO">
+      <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+      <End Role="BUSQUEDAXPRODUCTOS" EntitySet="BUSQUEDAXPRODUCTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODXCOM_COM" Association="Model.FK_PRODXCOM_COM">
+      <End Role="COMERCIOS" EntitySet="COMERCIOS" />
+      <End Role="PRODUCTOSXCOMERCIO" EntitySet="PRODUCTOSXCOMERCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_COMERCIO" Association="Model.FK_TIPO_COMERCIO">
+      <End Role="TIPO_COMERCIO" EntitySet="TIPO_COMERCIO" />
+      <End Role="COMERCIOS" EntitySet="COMERCIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTXCON_CONDICION" Association="Model.FK_NOTXCON_CONDICION">
+      <End Role="CONDICION" EntitySet="CONDICION" />
+      <End Role="NOTICIASXCONDICION" EntitySet="NOTICIASXCONDICION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USRXCON_CONDICION" Association="Model.FK_USRXCON_CONDICION">
+      <End Role="CONDICION" EntitySet="CONDICION" />
+      <End Role="USUARIOXCONDICION" EntitySet="USUARIOXCONDICION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTICIAS_USUARIO" Association="Model.FK_NOTICIAS_USUARIO">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTXCON_NOTICIAS" Association="Model.FK_NOTXCON_NOTICIAS">
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+      <End Role="NOTICIASXCONDICION" EntitySet="NOTICIASXCONDICION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_INF" Association="Model.FK_TIPO_INF">
+      <End Role="TIPO_INFORMACION" EntitySet="TIPO_INFORMACION" />
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODXCOM_PROD" Association="Model.FK_PRODXCOM_PROD">
+      <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+      <End Role="PRODUCTOSXCOMERCIO" EntitySet="PRODUCTOSXCOMERCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_PRODUCTO" Association="Model.FK_TIPO_PRODUCTO">
+      <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
+      <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLES_ROL" Association="Model.FK_ROLES_ROL">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="ROLESXUSUARIO" EntitySet="ROLESXUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLES_USUARIOS" Association="Model.FK_ROLES_USUARIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="ROLESXUSUARIO" EntitySet="ROLESXUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USRXCON_USR" Association="Model.FK_USRXCON_USR">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOXCONDICION" EntitySet="USUARIOXCONDICION" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BUSQUEDAS">
+    <Key>
+      <PropertyRef Name="ID_BUSQUEDA" />
+    </Key>
+    <Property Name="ID_BUSQUEDA" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="Int32" />
+    <Property Name="FECHA_HORA" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="USUARIOS" Relationship="Model.FK_BUSQUEDA_USUARIOS" FromRole="BUSQUEDAS" ToRole="USUARIOS" />
+    <NavigationProperty Name="BUSQUEDAXCOMERCIOS" Relationship="Model.FK_BUSQUEDAXCOMERCIOS" FromRole="BUSQUEDAS" ToRole="BUSQUEDAXCOMERCIOS" />
+    <NavigationProperty Name="BUSQUEDAXPRODUCTOS" Relationship="Model.FK_BUSQUEDAXPRODUCTOS" FromRole="BUSQUEDAS" ToRole="BUSQUEDAXPRODUCTOS" />
+  </EntityType>
+  <EntityType Name="BUSQUEDAXCOMERCIOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_BUSQUEDA" Type="Int32" Nullable="false" />
+    <Property Name="ID_COMERCIO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BUSQUEDAS" Relationship="Model.FK_BUSQUEDAXCOMERCIOS" FromRole="BUSQUEDAXCOMERCIOS" ToRole="BUSQUEDAS" />
+    <NavigationProperty Name="COMERCIOS" Relationship="Model.FK_BUSQUEDA_COMERCIO" FromRole="BUSQUEDAXCOMERCIOS" ToRole="COMERCIOS" />
+  </EntityType>
+  <EntityType Name="BUSQUEDAXPRODUCTOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_BUSQUEDA" Type="Int32" Nullable="false" />
+    <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BUSQUEDAS" Relationship="Model.FK_BUSQUEDAXPRODUCTOS" FromRole="BUSQUEDAXPRODUCTOS" ToRole="BUSQUEDAS" />
+    <NavigationProperty Name="PRODUCTOS" Relationship="Model.FK_BUSQUEDA_PRODUCTO" FromRole="BUSQUEDAXPRODUCTOS" ToRole="PRODUCTOS" />
+  </EntityType>
+  <EntityType Name="COMERCIOS">
+    <Key>
+      <PropertyRef Name="ID_COMERCIO" />
+    </Key>
+    <Property Name="ID_COMERCIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_TIPO" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="ID_USUARIO" Type="Int32" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="LATITUD" Type="Decimal" Precision="10" Scale="7" />
+    <Property Name="LONGUITUD" Type="Decimal" Precision="10" Scale="7" />
+    <Property Name="TELEFONO" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="CORREO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="BUSQUEDAXCOMERCIOS" Relationship="Model.FK_BUSQUEDA_COMERCIO" FromRole="COMERCIOS" ToRole="BUSQUEDAXCOMERCIOS" />
+    <NavigationProperty Name="PRODUCTOSXCOMERCIO" Relationship="Model.FK_PRODXCOM_COM" FromRole="COMERCIOS" ToRole="PRODUCTOSXCOMERCIO" />
+    <NavigationProperty Name="TIPO_COMERCIO" Relationship="Model.FK_TIPO_COMERCIO" FromRole="COMERCIOS" ToRole="TIPO_COMERCIO" />
+  </EntityType>
+  <EntityType Name="CONDICION">
+    <Key>
+      <PropertyRef Name="ID_CONDICION" />
+    </Key>
+    <Property Name="ID_CONDICION" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+    <Property Name="NOMBRE" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="INFORMACION_CONDICION" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="NOTICIASXCONDICION" Relationship="Model.FK_NOTXCON_CONDICION" FromRole="CONDICION" ToRole="NOTICIASXCONDICION" />
+    <NavigationProperty Name="USUARIOXCONDICION" Relationship="Model.FK_USRXCON_CONDICION" FromRole="CONDICION" ToRole="USUARIOXCONDICION" />
+  </EntityType>
+  <EntityType Name="NOTICIAS">
+    <Key>
+      <PropertyRef Name="ID_NOTICIA" />
+    </Key>
+    <Property Name="ID_NOTICIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO_CREADOR" Type="Int32" />
+    <Property Name="ID_TIPO_INFORMACION" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="TITULO" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="CUERPO_NOTICIA" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Model.FK_NOTICIAS_USUARIO" FromRole="NOTICIAS" ToRole="USUARIOS" />
+    <NavigationProperty Name="NOTICIASXCONDICION" Relationship="Model.FK_NOTXCON_NOTICIAS" FromRole="NOTICIAS" ToRole="NOTICIASXCONDICION" />
+    <NavigationProperty Name="TIPO_INFORMACION" Relationship="Model.FK_TIPO_INF" FromRole="NOTICIAS" ToRole="TIPO_INFORMACION" />
+  </EntityType>
+  <EntityType Name="NOTICIASXCONDICION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_CONDICION" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+    <Property Name="ID_NOTICIA" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CONDICION" Relationship="Model.FK_NOTXCON_CONDICION" FromRole="NOTICIASXCONDICION" ToRole="CONDICION" />
+    <NavigationProperty Name="NOTICIAS" Relationship="Model.FK_NOTXCON_NOTICIAS" FromRole="NOTICIASXCONDICION" ToRole="NOTICIAS" />
+  </EntityType>
+  <EntityType Name="PRODUCTOS">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" />
+    <Property Name="ID_TIPO" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="TIPO" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="INFORMACION_ADICIONAL" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="BUSQUEDAXPRODUCTOS" Relationship="Model.FK_BUSQUEDA_PRODUCTO" FromRole="PRODUCTOS" ToRole="BUSQUEDAXPRODUCTOS" />
+    <NavigationProperty Name="PRODUCTOSXCOMERCIO" Relationship="Model.FK_PRODXCOM_PROD" FromRole="PRODUCTOS" ToRole="PRODUCTOSXCOMERCIO" />
+    <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Model.FK_TIPO_PRODUCTO" FromRole="PRODUCTOS" ToRole="TIPO_PRODUCTO" />
+  </EntityType>
+  <EntityType Name="PRODUCTOSXCOMERCIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_COMERCIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="COMERCIOS" Relationship="Model.FK_PRODXCOM_COM" FromRole="PRODUCTOSXCOMERCIO" ToRole="COMERCIOS" />
+    <NavigationProperty Name="PRODUCTOS" Relationship="Model.FK_PRODXCOM_PROD" FromRole="PRODUCTOSXCOMERCIO" ToRole="PRODUCTOS" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="NOMBRE" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ROLESXUSUARIO" Relationship="Model.FK_ROLES_ROL" FromRole="ROLES" ToRole="ROLESXUSUARIO" />
+  </EntityType>
+  <EntityType Name="ROLESXUSUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_ROL" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <NavigationProperty Name="ROLES" Relationship="Model.FK_ROLES_ROL" FromRole="ROLESXUSUARIO" ToRole="ROLES" />
+    <NavigationProperty Name="USUARIOS" Relationship="Model.FK_ROLES_USUARIOS" FromRole="ROLESXUSUARIO" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="TIPO_COMERCIO">
+    <Key>
+      <PropertyRef Name="ID_TIPO" />
+    </Key>
+    <Property Name="ID_TIPO" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="COMERCIOS" Relationship="Model.FK_TIPO_COMERCIO" FromRole="TIPO_COMERCIO" ToRole="COMERCIOS" />
+  </EntityType>
+  <EntityType Name="TIPO_INFORMACION">
+    <Key>
+      <PropertyRef Name="ID_TIPO" />
+    </Key>
+    <Property Name="ID_TIPO" Type="Decimal" Nullable="false" Precision="3" Scale="0" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="NOTICIAS" Relationship="Model.FK_TIPO_INF" FromRole="TIPO_INFORMACION" ToRole="NOTICIAS" />
+  </EntityType>
+  <EntityType Name="TIPO_PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_TIPO" />
+    </Key>
+    <Property Name="ID_TIPO" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="PRODUCTOS" Relationship="Model.FK_TIPO_PRODUCTO" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTOS" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="CORREO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CONTRASENA" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="BUSQUEDAS" Relationship="Model.FK_BUSQUEDA_USUARIOS" FromRole="USUARIOS" ToRole="BUSQUEDAS" />
+    <NavigationProperty Name="NOTICIAS" Relationship="Model.FK_NOTICIAS_USUARIO" FromRole="USUARIOS" ToRole="NOTICIAS" />
+    <NavigationProperty Name="ROLESXUSUARIO" Relationship="Model.FK_ROLES_USUARIOS" FromRole="USUARIOS" ToRole="ROLESXUSUARIO" />
+    <NavigationProperty Name="USUARIOXCONDICION" Relationship="Model.FK_USRXCON_USR" FromRole="USUARIOS" ToRole="USUARIOXCONDICION" />
+  </EntityType>
+  <EntityType Name="USUARIOXCONDICION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_CONDICION" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+    <NavigationProperty Name="CONDICION" Relationship="Model.FK_USRXCON_CONDICION" FromRole="USUARIOXCONDICION" ToRole="CONDICION" />
+    <NavigationProperty Name="USUARIOS" Relationship="Model.FK_USRXCON_USR" FromRole="USUARIOXCONDICION" ToRole="USUARIOS" />
+  </EntityType>
+  <Association Name="FK_BUSQUEDA_USUARIOS">
+    <End Role="USUARIOS" Type="Model.USUARIOS" Multiplicity="0..1" />
+    <End Role="BUSQUEDAS" Type="Model.BUSQUEDAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="BUSQUEDAS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDAXCOMERCIOS">
+    <End Role="BUSQUEDAS" Type="Model.BUSQUEDAS" Multiplicity="1" />
+    <End Role="BUSQUEDAXCOMERCIOS" Type="Model.BUSQUEDAXCOMERCIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BUSQUEDAS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXCOMERCIOS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDAXPRODUCTOS">
+    <End Role="BUSQUEDAS" Type="Model.BUSQUEDAS" Multiplicity="1" />
+    <End Role="BUSQUEDAXPRODUCTOS" Type="Model.BUSQUEDAXPRODUCTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BUSQUEDAS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXPRODUCTOS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDA_COMERCIO">
+    <End Role="COMERCIOS" Type="Model.COMERCIOS" Multiplicity="1" />
+    <End Role="BUSQUEDAXCOMERCIOS" Type="Model.BUSQUEDAXCOMERCIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMERCIOS">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXCOMERCIOS">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDA_PRODUCTO">
+    <End Role="PRODUCTOS" Type="Model.PRODUCTOS" Multiplicity="1" />
+    <End Role="BUSQUEDAXPRODUCTOS" Type="Model.BUSQUEDAXPRODUCTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTOS">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXPRODUCTOS">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODXCOM_COM">
+    <End Role="COMERCIOS" Type="Model.COMERCIOS" Multiplicity="1" />
+    <End Role="PRODUCTOSXCOMERCIO" Type="Model.PRODUCTOSXCOMERCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMERCIOS">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Principal>
+      <Dependent Role="PRODUCTOSXCOMERCIO">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_COMERCIO">
+    <End Role="TIPO_COMERCIO" Type="Model.TIPO_COMERCIO" Multiplicity="0..1" />
+    <End Role="COMERCIOS" Type="Model.COMERCIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_COMERCIO">
+        <PropertyRef Name="ID_TIPO" />
+      </Principal>
+      <Dependent Role="COMERCIOS">
+        <PropertyRef Name="ID_TIPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTXCON_CONDICION">
+    <End Role="CONDICION" Type="Model.CONDICION" Multiplicity="1" />
+    <End Role="NOTICIASXCONDICION" Type="Model.NOTICIASXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Principal>
+      <Dependent Role="NOTICIASXCONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USRXCON_CONDICION">
+    <End Role="CONDICION" Type="Model.CONDICION" Multiplicity="1" />
+    <End Role="USUARIOXCONDICION" Type="Model.USUARIOXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Principal>
+      <Dependent Role="USUARIOXCONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTICIAS_USUARIO">
+    <End Role="USUARIOS" Type="Model.USUARIOS" Multiplicity="0..1" />
+    <End Role="NOTICIAS" Type="Model.NOTICIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="NOTICIAS">
+        <PropertyRef Name="ID_USUARIO_CREADOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTXCON_NOTICIAS">
+    <End Role="NOTICIAS" Type="Model.NOTICIAS" Multiplicity="1" />
+    <End Role="NOTICIASXCONDICION" Type="Model.NOTICIASXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NOTICIAS">
+        <PropertyRef Name="ID_NOTICIA" />
+      </Principal>
+      <Dependent Role="NOTICIASXCONDICION">
+        <PropertyRef Name="ID_NOTICIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_INF">
+    <End Role="TIPO_INFORMACION" Type="Model.TIPO_INFORMACION" Multiplicity="0..1" />
+    <End Role="NOTICIAS" Type="Model.NOTICIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_INFORMACION">
+        <PropertyRef Name="ID_TIPO" />
+      </Principal>
+      <Dependent Role="NOTICIAS">
+        <PropertyRef Name="ID_TIPO_INFORMACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODXCOM_PROD">
+    <End Role="PRODUCTOS" Type="Model.PRODUCTOS" Multiplicity="1" />
+    <End Role="PRODUCTOSXCOMERCIO" Type="Model.PRODUCTOSXCOMERCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTOS">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="PRODUCTOSXCOMERCIO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_PRODUCTO">
+    <End Role="TIPO_PRODUCTO" Type="Model.TIPO_PRODUCTO" Multiplicity="0..1" />
+    <End Role="PRODUCTOS" Type="Model.PRODUCTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PRODUCTO">
+        <PropertyRef Name="ID_TIPO" />
+      </Principal>
+      <Dependent Role="PRODUCTOS">
+        <PropertyRef Name="ID_TIPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLES_ROL">
+    <End Role="ROLES" Type="Model.ROLES" Multiplicity="1" />
+    <End Role="ROLESXUSUARIO" Type="Model.ROLESXUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="ROLESXUSUARIO">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLES_USUARIOS">
+    <End Role="USUARIOS" Type="Model.USUARIOS" Multiplicity="1" />
+    <End Role="ROLESXUSUARIO" Type="Model.ROLESXUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="ROLESXUSUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USRXCON_USR">
+    <End Role="USUARIOS" Type="Model.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOXCONDICION" Type="Model.USUARIOXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIOXCONDICION">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
