@@ -34,4 +34,27 @@ namespace NutriApp5.Models
         public virtual ICollection<PRODUCTOSXCOMERCIO> PRODUCTOSXCOMERCIO { get; set; }
         public virtual TIPO_COMERCIO TIPO_COMERCIO { get; set; }
     }
+
+    public class createEditComercios
+    {
+        public int ID_COMERCIO { get; set; }
+        public Nullable<decimal> ID_TIPO { get; set; }
+        [Required]
+        public Nullable<int> ID_USUARIO { get; set; }
+        [Required]
+        public string NOMBRE { get; set; }
+        [Required]
+        public Nullable<decimal> LATITUD { get; set; }
+        [Required]
+        public Nullable<decimal> LONGUITUD { get; set; }
+        [Required]
+        [Phone]
+        public Nullable<decimal> TELEFONO { get; set; }
+        [Required]
+        [EmailAddress]
+        public string CORREO { get; set; }
+
+        public Nullable<decimal> SelectedUsuario { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllUSERS { get; set; }
+    }
 }

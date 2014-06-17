@@ -40,7 +40,7 @@ namespace NutriApp5.Models
 
         private void cargaRolesUsuario()
         {
-            
+           
         }
     }
     public class ModeloLogin
@@ -71,6 +71,12 @@ namespace NutriApp5.Models
         [Display(Name = "Correo Electrónico")]
         public string CORREO { get; set; }
 
+        public IEnumerable<decimal> SelectedROLES { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllROLES { get; set; }
+
+        public IEnumerable<decimal> SelectedCONDICIONES { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllCONDICIONES { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -87,11 +93,15 @@ namespace NutriApp5.Models
         public int ID_USUARIO { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
+        [EmailAddress]
         public string CORREO { get; set; }
         public string CONTRASENA { get; set; }
 
         public IEnumerable<decimal> SelectedROLES { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> AllROLES { get; set; }
+
+        public IEnumerable<decimal> SelectedCONDICIONES { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllCONDICIONES { get; set; }
 
     }
 }

@@ -192,6 +192,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NOTICIASController.cs" />
     <Compile Include="Controllers\NOTICIASXCONDICIONController.cs" />
+    <Compile Include="Controllers\PRODUCTOSController.cs" />
     <Compile Include="Controllers\PRODUCTOSXCOMERCIOController.cs" />
     <Compile Include="Controllers\ROLESController.cs" />
     <Compile Include="Controllers\ROLESXUSUARIOController.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Controllers\TIPO_INFORMACIONController.cs" />
     <Compile Include="Controllers\TIPO_PRODUCTOController.cs" />
     <Compile Include="Controllers\USUARIOSController.cs" />
+    <Compile Include="Controllers\USUARIOXCONDICIONController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,6 +252,7 @@
     <Compile Include="Models\PRODUCTOS.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PRODUCTOSRepository.cs" />
     <Compile Include="Models\PRODUCTOSXCOMERCIO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -288,6 +291,7 @@
     <Compile Include="Models\USUARIOXCONDICION.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\USUARIOXCONDICIONRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -504,6 +508,18 @@
     <Content Include="Views\ROLESXUSUARIO\Details.cshtml" />
     <Content Include="Views\ROLESXUSUARIO\Index.cshtml" />
     <Content Include="Views\ROLESXUSUARIO\_CreateOrEdit.cshtml" />
+    <Content Include="Views\USUARIOXCONDICION\Create.cshtml" />
+    <Content Include="Views\USUARIOXCONDICION\Edit.cshtml" />
+    <Content Include="Views\USUARIOXCONDICION\Delete.cshtml" />
+    <Content Include="Views\USUARIOXCONDICION\Details.cshtml" />
+    <Content Include="Views\USUARIOXCONDICION\Index.cshtml" />
+    <Content Include="Views\USUARIOXCONDICION\_CreateOrEdit.cshtml" />
+    <Content Include="Views\PRODUCTOS\Create.cshtml" />
+    <Content Include="Views\PRODUCTOS\Edit.cshtml" />
+    <Content Include="Views\PRODUCTOS\Delete.cshtml" />
+    <Content Include="Views\PRODUCTOS\Details.cshtml" />
+    <Content Include="Views\PRODUCTOS\Index.cshtml" />
+    <Content Include="Views\PRODUCTOS\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

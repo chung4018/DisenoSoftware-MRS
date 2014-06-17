@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using nutriApp3.Models;
 using NutriApp5.Models;
 
 namespace NutriApp5.Controllers
@@ -12,7 +11,11 @@ namespace NutriApp5.Controllers
     {
 		private readonly IUSUARIOSRepository usuariosRepository;
         private readonly NutriApp5.Models.IROLESRepository rolesRepository = new NutriApp5.Models.ROLESRepository();
+        private readonly ICONDICIONRepository condicionRepository = new CONDICIONRepository();
         private Entities db = new Entities();
+
+        private readonly IROLESXUSUARIORepository rolesXusuarioRepository = new ROLESXUSUARIORepository();
+        private readonly IUSUARIOXCONDICIONRepository usuarioXcondicionRepository = new USUARIOXCONDICIONRepository();
 		// If you are using Dependency Injection, you can delete the following constructor
         public USUARIOSController() : this(new USUARIOSRepository())
         {
@@ -67,7 +70,33 @@ namespace NutriApp5.Controllers
  
         public ActionResult Edit(int id)
         {
-             return View(usuariosRepository.Find(id));
+            USUARIOS usuario = usuariosRepository.Find(id);
+            editUserViewModel userEdit = new editUserViewModel();
+
+           ICollection<ROLES> roles = rolesRepository.All.ToList();
+
+           ICollection<CONDICION> condicion = condicionRepository.All.ToList();
+
+            userEdit.ID_USUARIO = usuario.ID_USUARIO;
+            userEdit.NOMBRE = usuario.NOMBRE;
+            userEdit.APELLIDO = usuario.APELLIDO;
+            userEdit.CORREO = userEdit.CORREO;
+            userEdit.CONTRASENA = userEdit.CONTRASENA;
+            ViewBag.pass = userEdit.CONTRASENA;
+            userEdit.SelectedROLES = usuario.ROLES.Select(x => x.ID_ROL);
+            userEdit.AllROLES = roles.Select(x => new SelectListItem
+            {
+                Value = x.ID_ROL.ToString(),
+                Text = x.NOMBRE,
+            }).ToList();
+
+            userEdit.SelectedCONDICIONES = usuario.CONDICIONES.Select(x => x.ID_CONDICION);
+            userEdit.AllCONDICIONES = condicion.Select(x => new SelectListItem
+            {
+                Value = x.ID_CONDICION.ToString(),
+                Text = x.NOMBRE,
+            }).ToList();
+             return View(userEdit);
         }
 
         //
@@ -79,20 +108,43 @@ namespace NutriApp5.Controllers
             if (ModelState.IsValid) {
                 USUARIOS usuario = new USUARIOS();
                 ICollection<ROLES> newRoles = new List<ROLES> { };
-                //se generan los roles que han sido seleccionados por el usuario
-                foreach (var rol in userNewInfo.SelectedROLES)
-                {
-                    newRoles.Add(rolesRepository.Find(rol));
-                }
-
+               
                 usuario.ID_USUARIO = userNewInfo.ID_USUARIO;
                 usuario.NOMBRE = userNewInfo.NOMBRE;
                 usuario.APELLIDO = userNewInfo.APELLIDO;
                 usuario.CORREO = userNewInfo.CORREO;
                 usuario.CONTRASENA = userNewInfo.CONTRASENA;
-                usuario.ROLES = newRoles;
-
+                
+                //se guarda el usuario
                 usuariosRepository.InsertOrUpdate(usuario);
+
+                //se eliminan todos los roles del usuario para insertar los nuevos seleccionados
+                rolesXusuarioRepository.DeleteAllRolesUser(usuario.ID_USUARIO);
+                //se recorren los roles que se le han asignado al usuario
+                foreach (var rol in userNewInfo.SelectedROLES)
+                {
+                    ROLESXUSUARIO insertRol = new ROLESXUSUARIO();
+                    insertRol.ID_ROL = rol;
+                    USUARIOS userByEmail = usuariosRepository.getUserByEmail(usuario.CORREO);
+                    insertRol.ID_USUARIO = userByEmail.ID_USUARIO;
+
+                    rolesXusuarioRepository.InsertOrUpdate(insertRol);
+                    rolesXusuarioRepository.Save();
+                }
+                //se eliminan todos los roles del usuario para insertar los nuevos seleccionados
+                usuarioXcondicionRepository.DeleteAllCondicionesUser(usuario.ID_USUARIO);
+                //se recorren los roles que se le han asignado al usuario
+                foreach (var condicion in userNewInfo.SelectedCONDICIONES)
+                {
+                    USUARIOXCONDICION insertCondicion = new USUARIOXCONDICION();
+                    insertCondicion.ID_CONDICION = condicion;
+                    USUARIOS userByEmail = usuariosRepository.getUserByEmail(usuario.CORREO);
+                    insertCondicion.ID_USUARIO = userByEmail.ID_USUARIO;
+
+                    usuarioXcondicionRepository.InsertOrUpdate(insertCondicion);
+                    usuarioXcondicionRepository.Save();
+                }
+
                 usuariosRepository.Save();
                 return RedirectToAction("Index");
             } else {
@@ -114,6 +166,7 @@ namespace NutriApp5.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            rolesXusuarioRepository.DeleteAllRolesUser(id);//se eliminan los roles de la base de datos
             usuariosRepository.Delete(id);
             usuariosRepository.Save();
 
@@ -180,7 +233,14 @@ namespace NutriApp5.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            ModeloRegistro modelRegister = new ModeloRegistro(); 
+            ICollection<ROLES> roles = rolesRepository.All.ToList();
+            modelRegister.AllROLES = roles.Select(x => new SelectListItem
+            {
+                Value = x.ID_ROL.ToString(),
+                Text = x.NOMBRE,
+            }).ToList();
+            return View(modelRegister);
         }
 
         [HttpPost]
@@ -203,7 +263,21 @@ namespace NutriApp5.Controllers
                     user.APELLIDO = model.APELLIDO;
                     user.CONTRASENA = model.password;
                     user.CORREO = model.CORREO;
+
                     usuariosRepository.InsertOrUpdate(user);
+                    
+                    foreach (var rol in model.SelectedROLES)
+                    {
+                        ROLESXUSUARIO insertRol = new ROLESXUSUARIO();
+                        insertRol.ID_ROL = rol;
+                        USUARIOS userByEmail = usuariosRepository.getUserByEmail(user.CORREO);
+                        insertRol.ID_USUARIO = userByEmail.ID_USUARIO;
+
+                        rolesXusuarioRepository.InsertOrUpdate(insertRol);
+                        rolesXusuarioRepository.Save();
+                    }
+
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else

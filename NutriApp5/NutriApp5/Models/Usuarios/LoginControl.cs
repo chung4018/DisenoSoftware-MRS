@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using NutriApp5.Models;
 
-namespace nutriApp3.Models
+namespace NutriApp5.Models
 {
     public class LoginControl
     {

@@ -35,7 +35,9 @@ namespace NutriApp5.Models
         {
             if (condicion.ID_CONDICION == default(decimal)) {
                 // New entity
+                condicion.ID_CONDICION = getLastNumber() + 1;
                 context.CONDICION.Add(condicion);
+                context.SaveChanges();
             } else {
                 // Existing entity
                 context.Entry(condicion).State = EntityState.Modified;
@@ -56,6 +58,19 @@ namespace NutriApp5.Models
         public void Dispose() 
         {
             context.Dispose();
+        }
+        //recupera el ultimo registro de la base de datos  para los usuarios
+        private decimal getLastNumber()
+        {
+            decimal resp = 0;
+            IQueryable<CONDICION> condiciones = (from CONDICION p in context.CONDICION
+                                          select p);
+            foreach (var condicion in condiciones)
+            {
+                resp = condicion.ID_CONDICION;
+            }
+
+            return resp;
         }
     }
 

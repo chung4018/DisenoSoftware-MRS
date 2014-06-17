@@ -8,46 +8,46 @@ using System.Web;
 
 namespace NutriApp5.Models
 { 
-    public class COMERCIOSRepository : ICOMERCIOSRepository
+    public class PRODUCTOSRepository : IPRODUCTOSRepository
     {
         Entities context = new Entities();
 
-        public IQueryable<COMERCIOS> All
+        public IQueryable<PRODUCTOS> All
         {
-            get { return context.COMERCIOS; }
+            get { return context.PRODUCTOS; }
         }
 
-        public IQueryable<COMERCIOS> AllIncluding(params Expression<Func<COMERCIOS, object>>[] includeProperties)
+        public IQueryable<PRODUCTOS> AllIncluding(params Expression<Func<PRODUCTOS, object>>[] includeProperties)
         {
-            IQueryable<COMERCIOS> query = context.COMERCIOS;
+            IQueryable<PRODUCTOS> query = context.PRODUCTOS;
             foreach (var includeProperty in includeProperties) {
                 query = query.Include(includeProperty);
             }
             return query;
         }
 
-        public COMERCIOS Find(int id)
+        public PRODUCTOS Find(int id)
         {
-            return context.COMERCIOS.Find(id);
+            return context.PRODUCTOS.Find(id);
         }
 
-        public void InsertOrUpdate(COMERCIOS comercios)
+        public void InsertOrUpdate(PRODUCTOS productos)
         {
-            if (comercios.ID_COMERCIO == default(int)) {
+            if (productos.ID_PRODUCTO == default(int)) {
                 // New entity
-                comercios.ID_COMERCIO = getLastNumber() + 1;
-                context.COMERCIOS.Add(comercios);
+                productos.ID_PRODUCTO = getLastNumber() + 1;
+                context.PRODUCTOS.Add(productos);
                 context.SaveChanges();
             } else {
                 // Existing entity
-                context.Entry(comercios).State = EntityState.Modified;
+                context.Entry(productos).State = EntityState.Modified;
             }
         }
 
         public void Delete(int id)
         {
-            var comercios = context.COMERCIOS.Find(id);
-            context.COMERCIOS.Remove(comercios);
+            var productos = context.PRODUCTOS.Find(id);
+            context.PRODUCTOS.Remove(productos);
         }
 
         public void Save()
@@ -74,12 +74,12 @@ namespace NutriApp5.Models
         }
     }
 
-    public interface ICOMERCIOSRepository : IDisposable
+    public interface IPRODUCTOSRepository : IDisposable
     {
-        IQueryable<COMERCIOS> All { get; }
-        IQueryable<COMERCIOS> AllIncluding(params Expression<Func<COMERCIOS, object>>[] includeProperties);
-        COMERCIOS Find(int id);
-        void InsertOrUpdate(COMERCIOS comercios);
+        IQueryable<PRODUCTOS> All { get; }
+        IQueryable<PRODUCTOS> AllIncluding(params Expression<Func<PRODUCTOS, object>>[] includeProperties);
+        PRODUCTOS Find(int id);
+        void InsertOrUpdate(PRODUCTOS productos);
         void Delete(int id);
         void Save();
     }

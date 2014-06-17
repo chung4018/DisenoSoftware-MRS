@@ -35,7 +35,9 @@ namespace NutriApp5.Models
         {
             if (tipo_producto.ID_TIPO == default(decimal)) {
                 // New entity
+                tipo_producto.ID_TIPO = getLastNumber() + 1;
                 context.TIPO_PRODUCTO.Add(tipo_producto);
+                context.SaveChanges();
             } else {
                 // Existing entity
                 context.Entry(tipo_producto).State = EntityState.Modified;
@@ -56,6 +58,19 @@ namespace NutriApp5.Models
         public void Dispose() 
         {
             context.Dispose();
+        }
+        //recupera el ultimo registro de la base de datos  para los usuarios
+        private decimal getLastNumber()
+        {
+            decimal resp = 0;
+            IQueryable<TIPO_PRODUCTO> tipos = (from TIPO_PRODUCTO p in context.TIPO_PRODUCTO
+                                          select p);
+            foreach (var tipo in tipos)
+            {
+                resp = tipo.ID_TIPO;
+            }
+
+            return resp;
         }
     }
 

@@ -1,4 +1,4 @@
-@model NutriApp5.Models.createEditComercios
+@model NutriApp5.Models.createEditProductViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>COMERCIOS</legend>
+        <legend>PRODUCTOS</legend>
 
 		@Html.Partial("_CreateOrEdit", Model)
 
