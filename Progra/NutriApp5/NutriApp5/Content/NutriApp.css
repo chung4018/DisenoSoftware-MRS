@@ -1,0 +1,15 @@
+﻿.imagen_titulo {
+    position: absolute;
+    background-image: url("../Images/NutriApp/NutriApp.png");
+    background-repeat: no-repeat;
+    display: block;
+    width: 360px;
+    height: 160px;
+    text-indent: -9999px;
+}
+
+.encabezado {
+    position: relative;
+    margin-top:20px;
+    height: 250px;
+}

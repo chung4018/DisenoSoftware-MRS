@@ -3,7 +3,7 @@
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - Mi aplicación ASP.NET MVC</title>
+        <title>@ViewBag.Title - NutriSoluciones Tecnológicas</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -12,23 +12,25 @@
     <body>
         <header>
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("NutriApp", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
+                    <div class="float-left">
+                        <div style="height:160px">@Html.ActionLink("Button Name", "Index", null, new { @class = "imagen_titulo" })</div>
+                    </div>
+                    <div class="float-right">
+                        <section id="login">
+                            @Html.Partial("_LoginPartial")
+                        </section>
+                    </div>
+                <div style="clear:both; float:right">
+                    <nav style="text-align:right">
                         <ul id="menu">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Usuarios", "Index", "USUARIOS")</li>
+                            <li>@Html.ActionLink("Comercios", "Index", "COMERCIOS")</li>
+                            <li>@Html.ActionLink("Productos", "Index", "PRODUCTOS")</li>
                             <li>@Html.ActionLink("Noticias", "Contact", "Home")</li>
+                            <!--<li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>-->
                             <li>@Html.ActionLink("Búsquedas", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Gestión Productos", "Index", "PRODUCTOS")</li>
-                            <li>@Html.ActionLink("Gestión Comercios", "Index", "COMERCIOS")</li>
-                            <li>@Html.ActionLink("Gestión Usuarios", "Index", "USUARIOS")</li>
                         </ul>
                     </nav>
                 </div>
