@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="BUSQUEDAS" EntityType="Model.Store.BUSQUEDAS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BUSQUEDAXCOMERCIOS" EntityType="Model.Store.BUSQUEDAXCOMERCIOS" store:Type="Tables" Schema="dbo" />
@@ -123,8 +123,8 @@
           <Property Name="ID_TIPO" Type="numeric" Precision="2" />
           <Property Name="ID_USUARIO" Type="int" />
           <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
-          <Property Name="LATITUD" Type="decimal" Precision="10" Scale="7" />
-          <Property Name="LONGUITUD" Type="decimal" Precision="10" Scale="7" />
+          <Property Name="LATITUD" Type="float" Nullable="false" />
+          <Property Name="LONGUITUD" Type="float" Nullable="false" />
           <Property Name="TELEFONO" Type="numeric" Precision="8" />
           <Property Name="CORREO" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -430,8 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -560,8 +559,8 @@
           <Property Name="ID_TIPO" Type="Decimal" Precision="2" Scale="0" />
           <Property Name="ID_USUARIO" Type="Int32" />
           <Property Name="NOMBRE" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="LATITUD" Type="Decimal" Precision="10" Scale="7" />
-          <Property Name="LONGUITUD" Type="Decimal" Precision="10" Scale="7" />
+          <Property Name="LATITUD" Type="Double" Nullable="false" />
+          <Property Name="LONGUITUD" Type="Double" Nullable="false" />
           <Property Name="TELEFONO" Type="Decimal" Precision="8" Scale="0" />
           <Property Name="CORREO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="BUSQUEDAXCOMERCIOS" Relationship="Model.FK_BUSQUEDA_COMERCIO" FromRole="COMERCIOS" ToRole="BUSQUEDAXCOMERCIOS" />

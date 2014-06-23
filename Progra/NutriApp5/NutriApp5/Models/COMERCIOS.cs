@@ -25,10 +25,15 @@ namespace NutriApp5.Models
         public Nullable<decimal> ID_TIPO { get; set; }
         public Nullable<int> ID_USUARIO { get; set; }
         public string NOMBRE { get; set; }
-        public Nullable<decimal> LATITUD { get; set; }
-        public Nullable<decimal> LONGUITUD { get; set; }
+      //  [RegularExpression(@"\A\d+(\.\d{2,16})?\Z", ErrorMessage = "Please enter a numeric value with up to two decimal places.")]
+        public Double LATITUD { get; set; }
+       // [RegularExpression(@"\A\d+(\.\d{2,16})?\Z", ErrorMessage = "Please enter a numeric value with up to two decimal places.")]
+        public Double LONGUITUD { get; set; }
         public Nullable<decimal> TELEFONO { get; set; }
         public string CORREO { get; set; }
+
+        public IEnumerable<PRODUCTOS> PRODUCTOS { get; set; }
+        
     
         public virtual ICollection<BUSQUEDAXCOMERCIOS> BUSQUEDAXCOMERCIOS { get; set; }
         public virtual ICollection<PRODUCTOSXCOMERCIO> PRODUCTOSXCOMERCIO { get; set; }
@@ -39,22 +44,27 @@ namespace NutriApp5.Models
     {
         public int ID_COMERCIO { get; set; }
         public Nullable<decimal> ID_TIPO { get; set; }
-        [Required]
-        public Nullable<int> ID_USUARIO { get; set; }
+       
         [Required]
         public string NOMBRE { get; set; }
         [Required]
-        public Nullable<decimal> LATITUD { get; set; }
+       // [RegularExpression(@"\A\d+(\.\d{2,16})?\Z", ErrorMessage = "Please enter a numeric value with up to two decimal places.")]
+        public Double LATITUD { get; set; }
         [Required]
-        public Nullable<decimal> LONGUITUD { get; set; }
+       // [RegularExpression(@"\A\d+(\.\d{2,16})?\Z", ErrorMessage = "Please enter a numeric value with up to two decimal places.")]
+        public Double LONGUITUD { get; set; }
         [Required]
-        [Phone]
+       
         public Nullable<decimal> TELEFONO { get; set; }
         [Required]
-        [EmailAddress]
+        [EmailAddress] 
         public string CORREO { get; set; }
 
-        public Nullable<decimal> SelectedUsuario { get; set; }
+       
+        public Nullable<int> selectedUser { get; set; }
         public IEnumerable<System.Web.Mvc.SelectListItem> AllUSERS { get; set; }
+
+        public IEnumerable<int> SelectedPRODUCTOS { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllPRODUCTOS { get; set; }
     }
 }

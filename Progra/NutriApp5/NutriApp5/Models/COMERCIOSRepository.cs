@@ -12,6 +12,8 @@ namespace NutriApp5.Models
     {
         Entities context = new Entities();
 
+        private readonly IPRODUCTOSXCOMERCIORepository productosXcomercioRepository = new PRODUCTOSXCOMERCIORepository();
+        
         public IQueryable<COMERCIOS> All
         {
             get { return context.COMERCIOS; }
@@ -43,6 +45,26 @@ namespace NutriApp5.Models
                 context.Entry(comercios).State = EntityState.Modified;
             }
         }
+        //devuelve los productos de un comercio
+        public ICollection<PRODUCTOS> productosComercio(int idComercio)
+        {
+            ICollection<PRODUCTOS> listaProductos = new List<PRODUCTOS>();
+
+            IQueryable<PRODUCTOSXCOMERCIO> query = (from PRODUCTOSXCOMERCIO p in context.PRODUCTOSXCOMERCIO
+                                                    where p.ID_COMERCIO == idComercio
+                                                    select p); 
+            IPRODUCTOSRepository productosRepository = new PRODUCTOSRepository();
+
+            foreach(var producto in query)
+            {
+                listaProductos.Add(productosRepository.Find(producto.ID_PRODUCTO));                    
+            }
+
+
+            return listaProductos;
+
+
+        }
 
         public void Delete(int id)
         {
@@ -60,17 +82,34 @@ namespace NutriApp5.Models
             context.Dispose();
         }
         //recupera el ultimo registro de la base de datos  para los usuarios
-        private int getLastNumber()
+        public int getLastNumber()
         {
             int resp = 0;
-            IQueryable<PRODUCTOS> productos = (from PRODUCTOS p in context.PRODUCTOS
+            IQueryable<COMERCIOS> comercios = (from COMERCIOS p in context.COMERCIOS
                                                select p);
-            foreach (var producto in productos)
+            foreach (var comercio in comercios)
             {
-                resp = producto.ID_PRODUCTO;
+                resp = comercio.ID_COMERCIO;
             }
 
             return resp;
+        }
+
+        public bool hasProductosByCondition(int comercioId, int condicionID)
+        {
+            bool result = false;
+            //ICollection<PRODUCTOS> productosComercio = this.productosComercio(comercioId);
+            foreach (var producto in (this.productosComercio(comercioId)))
+            {
+                if (producto.TIPO == condicionID)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+
+            return result;
         }
     }
 
@@ -80,6 +119,9 @@ namespace NutriApp5.Models
         IQueryable<COMERCIOS> AllIncluding(params Expression<Func<COMERCIOS, object>>[] includeProperties);
         COMERCIOS Find(int id);
         void InsertOrUpdate(COMERCIOS comercios);
+        ICollection<PRODUCTOS> productosComercio(int idComercio);
+        bool hasProductosByCondition(int comercioId, int condicionID);
+        int getLastNumber();
         void Delete(int id);
         void Save();
     }

@@ -1,4 +1,4 @@
-@model NutriApp5.Models.createEditProductViewModel
+@model NutriApp5.Models.Productos.createEditProductViewModel
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
@@ -17,7 +17,7 @@
 <div class="editor-field">
     @Html.LabelFor(x => x.SelectedTIPO)
     @Html.DropDownListFor(x => x.SelectedTIPO, Model.AllTIPOS)
-           
+   
 </div>
 
 <div class="editor-label">

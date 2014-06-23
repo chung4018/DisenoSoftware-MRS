@@ -118,8 +118,8 @@
     <Property Name="ID_TIPO" Type="numeric" Precision="2" />
     <Property Name="ID_USUARIO" Type="int" />
     <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
-    <Property Name="LATITUD" Type="decimal" Precision="10" Scale="7" />
-    <Property Name="LONGUITUD" Type="decimal" Precision="10" Scale="7" />
+    <Property Name="LATITUD" Type="float" Nullable="false" />
+    <Property Name="LONGUITUD" Type="float" Nullable="false" />
     <Property Name="TELEFONO" Type="numeric" Precision="8" />
     <Property Name="CORREO" Type="varchar" MaxLength="50" />
   </EntityType>

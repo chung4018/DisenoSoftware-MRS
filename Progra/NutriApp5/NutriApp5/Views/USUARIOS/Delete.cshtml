@@ -3,40 +3,46 @@
 @{
     ViewBag.Title = "Delete";
 }
+@if(Model.ID_USUARIO != NutriApp5.Models.LoginControl.Instance.idLogedUser){
+    <h2>Delete</h2>
 
-<h2>Delete</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>USUARIOS</legend>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>USUARIOS</legend>
+        <div class="display-label">NOMBRE</div>
+        <div class="display-field">@Model.NOMBRE</div>
 
-    <div class="display-label">NOMBRE</div>
-    <div class="display-field">@Model.NOMBRE</div>
+        <div class="display-label">APELLIDO</div>
+        <div class="display-field">@Model.APELLIDO</div>
 
-    <div class="display-label">APELLIDO</div>
-    <div class="display-field">@Model.APELLIDO</div>
+        <div class="display-label">CORREO</div>
+        <div class="display-field">@Model.CORREO</div>
 
-    <div class="display-label">CORREO</div>
-    <div class="display-field">@Model.CORREO</div>
+        <div class="display-label">CONTRASENA</div>
+        <div class="display-field">@Model.CONTRASENA</div>
 
-    <div class="display-label">CONTRASENA</div>
-    <div class="display-field">@Model.CONTRASENA</div>
+        <div class="display-label">BUSQUEDAS</div>
+        <div class="display-field">@(Model.BUSQUEDAS == null ? "None" : Model.BUSQUEDAS.Count.ToString())</div>
 
-    <div class="display-label">BUSQUEDAS</div>
-    <div class="display-field">@(Model.BUSQUEDAS == null ? "None" : Model.BUSQUEDAS.Count.ToString())</div>
+        <div class="display-label">NOTICIAS</div>
+        <div class="display-field">@(Model.NOTICIAS == null ? "None" : Model.NOTICIAS.Count.ToString())</div>
 
-    <div class="display-label">NOTICIAS</div>
-    <div class="display-field">@(Model.NOTICIAS == null ? "None" : Model.NOTICIAS.Count.ToString())</div>
+        <div class="display-label">ROLESXUSUARIO</div>
+        <div class="display-field">@(Model.ROLESXUSUARIO == null ? "None" : Model.ROLESXUSUARIO.Count.ToString())</div>
 
-    <div class="display-label">ROLESXUSUARIO</div>
-    <div class="display-field">@(Model.ROLESXUSUARIO == null ? "None" : Model.ROLESXUSUARIO.Count.ToString())</div>
-
-    <div class="display-label">USUARIOXCONDICION</div>
-    <div class="display-field">@(Model.USUARIOXCONDICION == null ? "None" : Model.USUARIOXCONDICION.Count.ToString())</div>
-</fieldset>
-@using (Html.BeginForm()) {
+        <div class="display-label">USUARIOXCONDICION</div>
+        <div class="display-field">@(Model.USUARIOXCONDICION == null ? "None" : Model.USUARIOXCONDICION.Count.ToString())</div>
+    </fieldset>
+    using (Html.BeginForm()) {
+        <p>
+            <input type="submit" value="Delete" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+}else {
+    <p>No puede eliminar su propia cuenta.</p>
     <p>
-        <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>
 }

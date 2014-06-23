@@ -7,7 +7,7 @@
 
 @if (loginControl.LoginActive) {
     <text>
-        ¡Hola, @Html.ActionLink(loginControl.LogedUserName, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!
+        ¡Hola, @Html.ActionLink(loginControl.LogedUserName, "Edit", "USUARIOS", routeValues:null ,htmlAttributes: new { id = loginControl.idLogedUser })!
         @using (Html.BeginForm("LogOff", "USUARIOS", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>

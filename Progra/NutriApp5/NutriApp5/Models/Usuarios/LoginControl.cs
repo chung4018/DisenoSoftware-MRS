@@ -23,7 +23,7 @@ namespace NutriApp5.Models
         private LoginControl() { }
 
         public static LoginControl Instance
-       {
+        {
           get 
           {
              if (instance == null)

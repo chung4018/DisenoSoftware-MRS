@@ -35,6 +35,7 @@ namespace NutriApp5.Models
 
             user.ROLES = rolesXusuarioRepository.getRolesByUser(id);
             user.CONDICIONES = rolesXusuarioRepository.getCondicionByUser(id);
+            user.createRoles();
             return user;
         }
 

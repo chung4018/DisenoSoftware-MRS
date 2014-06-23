@@ -11,7 +11,6 @@ namespace NutriApp5.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class NOTICIAS
     {
@@ -19,7 +18,7 @@ namespace NutriApp5.Models
         {
             this.NOTICIASXCONDICION = new HashSet<NOTICIASXCONDICION>();
         }
-        [Key]
+    
         public int ID_NOTICIA { get; set; }
         public Nullable<int> ID_USUARIO_CREADOR { get; set; }
         public Nullable<decimal> ID_TIPO_INFORMACION { get; set; }

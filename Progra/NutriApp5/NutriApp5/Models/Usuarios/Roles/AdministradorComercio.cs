@@ -3,38 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace nutriApp3.Models.Usuarios.Roles
+namespace NutriApp5.Models.Usuarios.Roles
 {
     public class AdministradorComercio : RolUsuario
     {
         //Atributos
         private String[] comerciosAsociados;
-        
+        private ICOMERCIOSRepository comerciosRepository = new COMERCIOSRepository();
         //constructor 
         public AdministradorComercio()
         {
 
         }
         //Metodos 
-        public Boolean addProducto(String idProducto)
+        public override bool canPublishNotice()
         {
-            return true;
-
+            return false;
         }
-        public Boolean removeProducto(String idProducto)
+        public override bool isAdmin()
         {
-            return true;
-
+            return false;
         }
-        public Boolean modificarComercio()
+        public override bool isStoreAdmin()
         {
             return true;
-
         }
-        public Boolean eliminarComercio()
+        public override ICollection<int> getStoresAdmin()
         {
-            return true;
+            ICollection<int> result = new List<int>();
+            IQueryable<COMERCIOS> comercios = comerciosRepository.All;
+            foreach (var comercio in comercios)
+            {
+                if (comercio.ID_USUARIO == LoginControl.Instance.idLogedUser) 
+                    result.Add(comercio.ID_COMERCIO);
+            }
+            return result;
+        }
 
+        public override bool isAdminOf(int id)
+        {
+            ICollection<int> comerciosId = this.getStoresAdmin();
+            foreach (var comercio in comerciosId)
+            {
+                if (comercio == id)
+                    return true;
+            }
+            return false;
         }
 
         //Getters and Setters

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace nutriApp3.Models.Usuarios.Roles
+namespace NutriApp5.Models.Usuarios.Roles
 {
     public class Partner : RolUsuario
     {
@@ -17,9 +17,19 @@ namespace nutriApp3.Models.Usuarios.Roles
         }
 
         //Metodos
-        public Boolean publicarNoticia()
+        
+        public override bool canPublishNotice()
         {
             return true;
         }
+        public override bool isAdmin()
+        {
+            return false;
+        }
+        public override bool isStoreAdmin()
+        {
+            return false;
+        }
+        
     }
 }

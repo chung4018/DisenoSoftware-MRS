@@ -100,19 +100,17 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;
 }
 
     .main-content {
-        background: url("../Images/accent.png") no-repeat;
         padding-left: 10px;
         padding-top: 30px;
     }
 
     .featured + .main-content {
-        background: url("../Images/heroAccent.png") no-repeat;
+        
     }
 
 header .content-wrapper {
@@ -121,9 +119,10 @@ header .content-wrapper {
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
+    background-color: #0AA412;
     font-size: .8em;
     height: 100px;
+    color: #ffffff;
 }
 
 
@@ -261,7 +260,7 @@ ol.round {
 
     ol.round li {
         margin: 25px 0;
-        padding-left: 45px;
+        display: inline;
     }
 
         ol.round li.zero {
@@ -600,7 +599,7 @@ tr.pager td {
     /* header
     ----------------------------------------------------------*/
     header .float-left {
-        float:left;
+        float:none;
     }
     header .float-right {
         float: right;
@@ -685,6 +684,7 @@ tr.pager td {
     ol.round {
         list-style-type: none;
         padding-left: 0;
+        margin-top: -3rem;
     }
 
         ol.round li {

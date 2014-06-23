@@ -11,19 +11,22 @@ namespace NutriApp5.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+
+    using NutriApp5.Models.Usuarios.Roles;
     
     public partial class USUARIOS
     {
-        private readonly IROLESXUSUARIORepository rolesXusuarioRepository = new ROLESXUSUARIORepository();
         public USUARIOS()
         {
             this.BUSQUEDAS = new HashSet<BUSQUEDAS>();
             this.NOTICIAS = new HashSet<NOTICIAS>();
             this.ROLESXUSUARIO = new HashSet<ROLESXUSUARIO>();
             this.USUARIOXCONDICION = new HashSet<USUARIOXCONDICION>();
+
+            this.RolesUsuario = new List<RolUsuario>();
         }
-        [Key]
+        private readonly USUARIOSRepository usuariosRepository = new USUARIOSRepository();
+       
         public int ID_USUARIO { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
@@ -35,73 +38,32 @@ namespace NutriApp5.Models
         public virtual ICollection<ROLESXUSUARIO> ROLESXUSUARIO { get; set; }
         public virtual ICollection<USUARIOXCONDICION> USUARIOXCONDICION { get; set; }
 
+        public ICollection<RolUsuario> RolesUsuario { get; set; }
+
         public virtual ICollection<ROLES> ROLES { get; set; }
         public virtual ICollection<CONDICION> CONDICIONES { get; set; }
 
-        private void cargaRolesUsuario()
+        public void createRoles()
         {
-           
+            ICollection<ROLES> rolesUsuario = usuariosRepository.getUserRoles(this.ID_USUARIO);
+            foreach (var rol in rolesUsuario)
+            {
+                switch (rol.ID_ROL.ToString())
+                {
+                    case "0":
+                        this.RolesUsuario.Add(new AdministradorPlataforma());
+                        break;
+                    case "1":
+                        this.RolesUsuario.Add(new AdministradorComercio());
+                        break;
+                    case "2":
+                        this.RolesUsuario.Add(new Partner());
+                        break;
+                    case "3":
+                        this.RolesUsuario.Add(new Comun());
+                        break;
+                }
+            }
         }
-    }
-    public class ModeloLogin
-    {
-        [Required]
-        [Display(Name = "Nombre de usuario")]
-        public string UserName { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        public string Password { get; set; }
-    }
-
-    public class ModeloRegistro
-    {
-        [Required]
-        [Display(Name = "Nombre")]
-        public string NOMBRE { get; set; }
-
-        [Required]
-        [Display(Name = "Apellidos")]
-        public string APELLIDO { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [StringLength(100, ErrorMessage = "Formato: email@domain.domain", MinimumLength = 6)]
-        [Display(Name = "Correo Electrónico")]
-        public string CORREO { get; set; }
-
-        public IEnumerable<decimal> SelectedROLES { get; set; }
-        public IEnumerable<System.Web.Mvc.SelectListItem> AllROLES { get; set; }
-
-        public IEnumerable<decimal> SelectedCONDICIONES { get; set; }
-        public IEnumerable<System.Web.Mvc.SelectListItem> AllCONDICIONES { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        public string password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmar contraseña")]
-        [Compare("password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
-        public string ConfirmPassword { get; set; }
-    }
-    public class editUserViewModel
-    {
-        public int ID_USUARIO { get; set; }
-        public string NOMBRE { get; set; }
-        public string APELLIDO { get; set; }
-        [EmailAddress]
-        public string CORREO { get; set; }
-        public string CONTRASENA { get; set; }
-
-        public IEnumerable<decimal> SelectedROLES { get; set; }
-        public IEnumerable<System.Web.Mvc.SelectListItem> AllROLES { get; set; }
-
-        public IEnumerable<decimal> SelectedCONDICIONES { get; set; }
-        public IEnumerable<System.Web.Mvc.SelectListItem> AllCONDICIONES { get; set; }
-
     }
 }

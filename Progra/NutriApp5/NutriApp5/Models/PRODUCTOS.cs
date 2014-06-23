@@ -11,7 +11,6 @@ namespace NutriApp5.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class PRODUCTOS
     {
@@ -20,7 +19,7 @@ namespace NutriApp5.Models
             this.BUSQUEDAXPRODUCTOS = new HashSet<BUSQUEDAXPRODUCTOS>();
             this.PRODUCTOSXCOMERCIO = new HashSet<PRODUCTOSXCOMERCIO>();
         }
-        [Key]
+    
         public int ID_PRODUCTO { get; set; }
         public Nullable<decimal> ID_TIPO { get; set; }
         public Nullable<decimal> TIPO { get; set; }
@@ -31,17 +30,4 @@ namespace NutriApp5.Models
         public virtual ICollection<PRODUCTOSXCOMERCIO> PRODUCTOSXCOMERCIO { get; set; }
         public virtual TIPO_PRODUCTO TIPO_PRODUCTO { get; set; }
     }
-
-    public class createEditProductViewModel
-    {
-        public int ID_PRODUCTO { get; set; }
-        [Required]
-        public string NOMBRE { get; set; }
-        [Required]
-        public string INFORMACION_ADICIONAL { get; set; }
-
-        public Nullable <decimal> SelectedTIPO { get; set; }
-        public IEnumerable<System.Web.Mvc.SelectListItem> AllTIPOS { get; set; }
-    }
-
 }

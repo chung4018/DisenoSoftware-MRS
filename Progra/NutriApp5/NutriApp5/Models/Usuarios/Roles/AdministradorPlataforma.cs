@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace nutriApp3.Models.Usuarios.Roles
+namespace NutriApp5.Models.Usuarios.Roles
 {
     public class AdministradorPlataforma : RolUsuario
     {
@@ -16,40 +16,18 @@ namespace nutriApp3.Models.Usuarios.Roles
         }
 
         //Metodos
-        public Boolean setRol()
+        public override bool canPublishNotice()
         {
             return true;
         }
-
-        public Boolean publicarNoticia()
+        public override bool isAdmin()
         {
             return true;
         }
-
-        public void crearComercio()
+        public override bool isStoreAdmin()
         {
-
+            return true;
         }
-        public void modificarComercio()
-        {
-
-        }
-        public void eliminarComercio()
-        {
-
-        }
-        public void crearProducto()
-        {
-
-        }
-
-        public void modificarProducto()
-        {
-
-        }
-        public void eliminarProducto()
-        {
-
-        }
+        
     }
 }

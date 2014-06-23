@@ -14,7 +14,6 @@ namespace NutriApp5.Models
     
     public partial class BUSQUEDAXCOMERCIOS
     {
-
         public int ID { get; set; }
         public int ID_BUSQUEDA { get; set; }
         public int ID_COMERCIO { get; set; }

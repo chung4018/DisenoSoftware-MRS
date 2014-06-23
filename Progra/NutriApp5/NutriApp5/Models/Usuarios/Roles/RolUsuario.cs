@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace nutriApp3.Models
+namespace NutriApp5.Models
 {
     public abstract class RolUsuario
     {
@@ -16,5 +16,20 @@ namespace nutriApp3.Models
             get { return nombreRol; }
             set { nombreRol = value; }
         }
+        public abstract bool canPublishNotice();
+        public abstract bool isAdmin();
+        public virtual ICollection<int> getStoresAdmin()
+        {
+           
+            return (new List<int>());
+        
+        }
+
+        public virtual bool isAdminOf(int id)
+        {
+            
+            return false;
+        }
+        public abstract bool isStoreAdmin();
     }
 }

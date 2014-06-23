@@ -1,4 +1,4 @@
-﻿@model NutriApp5.Models.ModeloRegistro
+﻿@model NutriApp5.Models.Usuarios.ModeloRegistro
 @{
     ViewBag.Title = "Registrarse";
 }
@@ -32,7 +32,10 @@
                @Html.LabelFor(x => x.SelectedROLES)
                @Html.ListBoxFor(x => x.SelectedROLES, Model.AllROLES)
             </li>
-            
+            <li>
+                @Html.LabelFor(x => x.SelectedCONDICIONES)
+                @Html.ListBoxFor(x => x.SelectedCONDICIONES, Model.AllCONDICIONES)
+            </li>
             <li>
                 @Html.LabelFor(m => m.password)
                 @Html.PasswordFor(m => m.password)

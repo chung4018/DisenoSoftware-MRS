@@ -11,7 +11,6 @@ namespace NutriApp5.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class TIPO_PRODUCTO
     {
@@ -19,7 +18,7 @@ namespace NutriApp5.Models
         {
             this.PRODUCTOS = new HashSet<PRODUCTOS>();
         }
-        [Key]
+    
         public decimal ID_TIPO { get; set; }
         public string NOMBRE { get; set; }
     

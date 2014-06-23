@@ -2,12 +2,15 @@
 
 @{
     ViewBag.Title = "Index";
+    NutriApp5.Seguridad.Seguridad secureControl = NutriApp5.Seguridad.Seguridad.Instance;
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if(secureControl.canPublishNotice()||secureControl.isAdmin()){
+        @Html.ActionLink("Create New", "Create")
+    }
 </p>
 <table>
     <tr>

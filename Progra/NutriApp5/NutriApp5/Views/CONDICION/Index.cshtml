@@ -1,7 +1,8 @@
 @model IEnumerable<NutriApp5.Models.CONDICION>
-
+@using NutriApp5.Seguridad
 @{
     ViewBag.Title = "Index";
+    Seguridad secureControl = Seguridad.Instance;
 }
 
 <h2>Index</h2>

@@ -1,0 +1,30 @@
+@model NutriApp5.Models.Busquedas.BusquedaViewModel
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+ @using (Html.BeginForm("Index","BUSQUEDAS",FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Selección de busqueda</legend>
+
+            <div class="editor-label">
+                @Html.EditorFor(x => x.stringBuscado)
+            </div>
+            <div class="editor-field">
+                @Html.LabelFor(x => x.condicionSelected)
+                @Html.ListBoxFor(x => x.condicionSelected,Model.arrayCondiciones)
+            </div>
+            <div class="editor-field">
+                @Html.LabelFor(x => x.buscarEn)
+                @Html.DropDownListFor(x => x.buscarEn, Model.arrayBuscarEn)
+            </div>
+            <p>
+                <input type="submit" value="Realizar Búsqueda" />
+            </p>
+        </fieldset>
+    }
+
+
+
+
+

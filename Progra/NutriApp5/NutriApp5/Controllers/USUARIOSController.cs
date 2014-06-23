@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NutriApp5.Models;
+using NutriApp5.Models.Usuarios;
 
 namespace NutriApp5.Controllers
 {   
@@ -47,22 +48,87 @@ namespace NutriApp5.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            editUserViewModel model = new editUserViewModel();
+            IEnumerable<ROLES> roles = rolesRepository.All.ToList();
+
+            ICollection<CONDICION> condicion = condicionRepository.All.ToList();
+
+            //model.SelectedROLES = new List<decimal> { };
+            model.AllROLES = roles.Select(x => new SelectListItem
+            {
+                Value = x.ID_ROL.ToString(),
+                Text = x.NOMBRE,
+            }).ToList();
+
+           // userEdit.SelectedCONDICIONES = usuario.CONDICIONES.Select(x => x.ID_CONDICION);
+            model.AllCONDICIONES = condicion.Select(x => new SelectListItem
+            {
+                Value = x.ID_CONDICION.ToString(),
+                Text = x.NOMBRE,
+            }).ToList();
+            return View(model);
         } 
 
         //
         // POST: /USUARIOS/Create
 
         [HttpPost]
-        public ActionResult Create(USUARIOS usuarios)
+        public ActionResult Create(editUserViewModel userNewInfo)
         {
-            if (ModelState.IsValid) {
-                usuariosRepository.InsertOrUpdate(usuarios);
-                usuariosRepository.Save();
-                return RedirectToAction("Index");
-            } else {
-				return View();
-			}
+            //if (ModelState.IsValid) {
+                 USUARIOS users = new USUARIOS();
+                 users = (from USUARIOS p in db.USUARIOS
+                     where p.CORREO == userNewInfo.CORREO
+                     select p).FirstOrDefault();
+                 if (users == null)
+                 {
+                     USUARIOS usuario = new USUARIOS();
+                     IEnumerable<ROLES> newRoles = new List<ROLES> { };
+
+                     usuario.ID_USUARIO = userNewInfo.ID_USUARIO;
+                     usuario.NOMBRE = userNewInfo.NOMBRE;
+                     usuario.APELLIDO = userNewInfo.APELLIDO;
+                     usuario.CORREO = userNewInfo.CORREO;
+                     usuario.CONTRASENA = userNewInfo.CONTRASENA;
+
+                     //se guarda el usuario
+                     usuariosRepository.InsertOrUpdate(usuario);
+
+                     //se eliminan todos los roles del usuario para insertar los nuevos seleccionados
+                     rolesXusuarioRepository.DeleteAllRolesUser(usuario.ID_USUARIO);
+                     //se recorren los roles que se le han asignado al usuario
+                     foreach (var rol in userNewInfo.SelectedROLES)
+                     {
+                         ROLESXUSUARIO insertRol = new ROLESXUSUARIO();
+                         insertRol.ID_ROL = rol;
+                         USUARIOS userByEmail = usuariosRepository.getUserByEmail(usuario.CORREO);
+                         insertRol.ID_USUARIO = userByEmail.ID_USUARIO;
+
+                         rolesXusuarioRepository.InsertOrUpdate(insertRol);
+                         rolesXusuarioRepository.Save();
+                     }
+                     //se eliminan todos los roles del usuario para insertar los nuevos seleccionados
+                     usuarioXcondicionRepository.DeleteAllCondicionesUser(usuario.ID_USUARIO);
+                     //se recorren los roles que se le han asignado al usuario
+                     foreach (var condicion in userNewInfo.SelectedCONDICIONES)
+                     {
+                         USUARIOXCONDICION insertCondicion = new USUARIOXCONDICION();
+                         insertCondicion.ID_CONDICION = condicion;
+                         USUARIOS userByEmail = usuariosRepository.getUserByEmail(usuario.CORREO);
+                         insertCondicion.ID_USUARIO = userByEmail.ID_USUARIO;
+
+                         usuarioXcondicionRepository.InsertOrUpdate(insertCondicion);
+                         usuarioXcondicionRepository.Save();
+                     }
+
+                     usuariosRepository.Save();
+                     return RedirectToAction("Index");
+                 }
+                 else
+                 {
+                     ModelState.AddModelError("", "Ya existe un usuario con este correo electronico.");
+                     return View(userNewInfo);
+                 }
         }
         
         //
@@ -167,6 +233,7 @@ namespace NutriApp5.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             rolesXusuarioRepository.DeleteAllRolesUser(id);//se eliminan los roles de la base de datos
+            usuarioXcondicionRepository.DeleteAllCondicionesUser(id);
             usuariosRepository.Delete(id);
             usuariosRepository.Save();
 
@@ -186,20 +253,21 @@ namespace NutriApp5.Controllers
         {
             if (ModelState.IsValid)
             {
-                USUARIOS users = (from USUARIOS p in db.USUARIOS
+                USUARIOS user = (from USUARIOS p in db.USUARIOS
                                   where p.CORREO == model.UserName
                                   select p).FirstOrDefault();
-
+                USUARIOS userInstance = usuariosRepository.Find(user.ID_USUARIO);
                 try
                 {
-                    if (users.CONTRASENA != null)
+                    if (user.CONTRASENA != null)
                     {
-                        if (users.CONTRASENA == model.Password)
+                        if (user.CONTRASENA == model.Password)
                         {
                             //            FormsService.SignIn(model.UserName, model.RememberMe);
                             LoginControl log = LoginControl.Instance;
-                            log.idLogedUser = users.ID_USUARIO;
-                            log.LogedUserName = users.NOMBRE;
+                            log.idLogedUser = userInstance.ID_USUARIO;
+                            log.LogedUserName = userInstance.NOMBRE;
+                            log.objUsuario = userInstance;
                             log.LoginActive = true;
                             return RedirectToAction("Index", "Home");
                         }
@@ -233,7 +301,15 @@ namespace NutriApp5.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ModeloRegistro modelRegister = new ModeloRegistro(); 
+            ModeloRegistro modelRegister = new ModeloRegistro();
+
+            ICollection<CONDICION> condicion = condicionRepository.All.ToList();
+            modelRegister.AllCONDICIONES = condicion.Select(x => new SelectListItem
+            {
+                Value = x.ID_CONDICION.ToString(),
+                Text = x.NOMBRE,
+            }).ToList();
+            
             ICollection<ROLES> roles = rolesRepository.All.ToList();
             modelRegister.AllROLES = roles.Select(x => new SelectListItem
             {
@@ -276,6 +352,16 @@ namespace NutriApp5.Controllers
                         rolesXusuarioRepository.InsertOrUpdate(insertRol);
                         rolesXusuarioRepository.Save();
                     }
+                    foreach (var condicion in model.SelectedCONDICIONES)
+                    {
+                        USUARIOXCONDICION insertCondicion = new USUARIOXCONDICION();
+                        insertCondicion.ID_CONDICION = condicion;
+                        USUARIOS userByEmail = usuariosRepository.getUserByEmail(user.CORREO);
+                        insertCondicion.ID_USUARIO = userByEmail.ID_USUARIO;
+
+                        usuarioXcondicionRepository.InsertOrUpdate(insertCondicion);
+                        usuarioXcondicionRepository.Save();
+                    }
 
                     
                     return RedirectToAction("Index", "Home");
@@ -299,9 +385,9 @@ namespace NutriApp5.Controllers
             LoginControl log = LoginControl.Instance;
             log.idLogedUser = 0;
             log.LogedUserName = "";
+            log.objUsuario = null;
             log.LoginActive = false;
             return RedirectToAction("Index", "Home");
         }
     }
 }
-

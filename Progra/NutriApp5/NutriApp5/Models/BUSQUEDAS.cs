@@ -11,7 +11,6 @@ namespace NutriApp5.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class BUSQUEDAS
     {
@@ -20,7 +19,7 @@ namespace NutriApp5.Models
             this.BUSQUEDAXCOMERCIOS = new HashSet<BUSQUEDAXCOMERCIOS>();
             this.BUSQUEDAXPRODUCTOS = new HashSet<BUSQUEDAXPRODUCTOS>();
         }
-        [Key]
+    
         public int ID_BUSQUEDA { get; set; }
         public Nullable<int> ID_USUARIO { get; set; }
         public Nullable<System.DateTime> FECHA_HORA { get; set; }

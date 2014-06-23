@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NutriApp5.Models;
+using NutriApp5.Models.Productos;
 
 namespace NutriApp5.Controllers
 {   

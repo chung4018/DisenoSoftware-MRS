@@ -11,7 +11,6 @@ namespace NutriApp5.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class ROLES
     {
@@ -19,7 +18,7 @@ namespace NutriApp5.Models
         {
             this.ROLESXUSUARIO = new HashSet<ROLESXUSUARIO>();
         }
-        [Key]
+    
         public decimal ID_ROL { get; set; }
         public string NOMBRE { get; set; }
     

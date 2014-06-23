@@ -1,0 +1,14 @@
+﻿@model NutriApp5.Models.Busquedas.BusquedaViewModel
+
+<div id="contenedorBusquedasResultado">
+   
+    @if(@Model!=null){
+        <ul>
+            @Model.buscarEn
+        </ul>
+    }
+    else{
+       <p>no resultados</p>
+    }
+
+</div>
