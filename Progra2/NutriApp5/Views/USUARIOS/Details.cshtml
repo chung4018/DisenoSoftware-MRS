@@ -1,0 +1,25 @@
+@model NutriApp5.Models.USUARIOS
+
+@{
+    ViewBag.Title = "Detalle de los usuarios...";
+}
+
+<h2>Detalles de los usuarios.</h2>
+
+<fieldset>
+    <legend>USUARIOS</legend>
+    <div style="text-align:left; margin-left:25px;">
+        <div class="display-label">NOMBRE: @Model.NOMBRE</div>
+
+        <div class="display-label">APELLIDO: @Model.APELLIDO</div>
+
+        <div class="display-label">CORREO: @Model.CORREO</div>
+
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.ID_USUARIO }) |
+    @Html.ActionLink("Atrás", "Index")
+</p>
+
+

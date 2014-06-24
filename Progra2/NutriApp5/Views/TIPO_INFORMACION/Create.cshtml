@@ -1,0 +1,26 @@
+@model NutriApp5.Models.TIPO_INFORMACION
+
+@{
+    ViewBag.Title = "Crear tipo de información...";
+}
+
+<h2>Crear </h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>TIPO DE INFORMACION</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>
+
+

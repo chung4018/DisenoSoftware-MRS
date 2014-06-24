@@ -1,0 +1,53 @@
+@model NutriApp5.Models.Busquedas.BusquedaViewModel
+
+@{
+    ViewBag.Title = "Búsqueda";
+}
+<!--<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/BusquedaSender.js"></script>-->
+<h2>Búsqueda</h2>
+<div id="contenedor_busqueda">
+    <div id="tipoBusqueda">
+     
+       @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>Selección de busqueda</legend>
+
+                <div class="editor-label">
+                    @Html.Label("Filtro por nombre")
+                    @Html.EditorFor(x => x.stringBuscado, new { id = "stringBuscado" })
+                </div>
+                <div class="editor-field">
+                    <label class="etiquetas">Selección de la condición</label>
+                    <!--@Html.LabelFor(x => x.condicionSelected)-->
+                    @Html.ListBoxFor(x => x.condicionSelected,Model.arrayCondiciones,new { id = "condicionSelected" })
+                </div>
+                <div class="editor-field">
+                    <label class="etiquetas">Buscar en</label>
+                    <!--@Html.LabelFor(x => x.buscarEn)-->
+                    @Html.DropDownListFor(x => x.buscarEn, Model.arrayBuscarEn, new { id = "buscarEn" })
+                </div>
+                <p>
+                   @Html.ActionLink("RealizarBusqueda", "RealizarBusqueda", null, new { id = "realizarBusqueda" })
+                </p>
+            </fieldset>
+        }
+        @Scripts.Render("~/bundles/jquery")
+    
+       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
+       <script src="~/Scripts/GoogleMapsFunctions/Busquedas.js"></script>
+    
+
+    </div>
+    <div id="contenedorBusqudas">
+        <div id="resultadoBusqueda">
+
+        </div>
+
+    </div>
+</div>
+@Html.Label("Ubicación del comercio")
+<div id="mapaComercio" style="width: 500px; height: 400px;"></div>
+

@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="BUSQUEDAS" EntityType="Model.Store.BUSQUEDAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BUSQUEDAXCOMERCIOS" EntityType="Model.Store.BUSQUEDAXCOMERCIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BUSQUEDAXPRODUCTOS" EntityType="Model.Store.BUSQUEDAXPRODUCTOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="COMERCIOS" EntityType="Model.Store.COMERCIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CONDICION" EntityType="Model.Store.CONDICION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NOTICIAS" EntityType="Model.Store.NOTICIAS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NOTICIASXCONDICION" EntityType="Model.Store.NOTICIASXCONDICION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCTOS" EntityType="Model.Store.PRODUCTOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCTOSXCOMERCIO" EntityType="Model.Store.PRODUCTOSXCOMERCIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ROLES" EntityType="Model.Store.ROLES" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ROLESXUSUARIO" EntityType="Model.Store.ROLESXUSUARIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TIPO_COMERCIO" EntityType="Model.Store.TIPO_COMERCIO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TIPO_INFORMACION" EntityType="Model.Store.TIPO_INFORMACION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TIPO_PRODUCTO" EntityType="Model.Store.TIPO_PRODUCTO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOS" EntityType="Model.Store.USUARIOS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="USUARIOXCONDICION" EntityType="Model.Store.USUARIOXCONDICION" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_BUSQUEDA_COMERCIO" Association="Model.Store.FK_BUSQUEDA_COMERCIO">
+      <End Role="COMERCIOS" EntitySet="COMERCIOS" />
+      <End Role="BUSQUEDAXCOMERCIOS" EntitySet="BUSQUEDAXCOMERCIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDA_PRODUCTO" Association="Model.Store.FK_BUSQUEDA_PRODUCTO">
+      <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+      <End Role="BUSQUEDAXPRODUCTOS" EntitySet="BUSQUEDAXPRODUCTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDA_USUARIOS" Association="Model.Store.FK_BUSQUEDA_USUARIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="BUSQUEDAS" EntitySet="BUSQUEDAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDAXCOMERCIOS" Association="Model.Store.FK_BUSQUEDAXCOMERCIOS">
+      <End Role="BUSQUEDAS" EntitySet="BUSQUEDAS" />
+      <End Role="BUSQUEDAXCOMERCIOS" EntitySet="BUSQUEDAXCOMERCIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUSQUEDAXPRODUCTOS" Association="Model.Store.FK_BUSQUEDAXPRODUCTOS">
+      <End Role="BUSQUEDAS" EntitySet="BUSQUEDAS" />
+      <End Role="BUSQUEDAXPRODUCTOS" EntitySet="BUSQUEDAXPRODUCTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTICIAS_USUARIO" Association="Model.Store.FK_NOTICIAS_USUARIO">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTXCON_CONDICION" Association="Model.Store.FK_NOTXCON_CONDICION">
+      <End Role="CONDICION" EntitySet="CONDICION" />
+      <End Role="NOTICIASXCONDICION" EntitySet="NOTICIASXCONDICION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTXCON_NOTICIAS" Association="Model.Store.FK_NOTXCON_NOTICIAS">
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+      <End Role="NOTICIASXCONDICION" EntitySet="NOTICIASXCONDICION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODXCOM_COM" Association="Model.Store.FK_PRODXCOM_COM">
+      <End Role="COMERCIOS" EntitySet="COMERCIOS" />
+      <End Role="PRODUCTOSXCOMERCIO" EntitySet="PRODUCTOSXCOMERCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODXCOM_PROD" Association="Model.Store.FK_PRODXCOM_PROD">
+      <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+      <End Role="PRODUCTOSXCOMERCIO" EntitySet="PRODUCTOSXCOMERCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLES_ROL" Association="Model.Store.FK_ROLES_ROL">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="ROLESXUSUARIO" EntitySet="ROLESXUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLES_USUARIOS" Association="Model.Store.FK_ROLES_USUARIOS">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="ROLESXUSUARIO" EntitySet="ROLESXUSUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_COMERCIO" Association="Model.Store.FK_TIPO_COMERCIO">
+      <End Role="TIPO_COMERCIO" EntitySet="TIPO_COMERCIO" />
+      <End Role="COMERCIOS" EntitySet="COMERCIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_INF" Association="Model.Store.FK_TIPO_INF">
+      <End Role="TIPO_INFORMACION" EntitySet="TIPO_INFORMACION" />
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO_PRODUCTO" Association="Model.Store.FK_TIPO_PRODUCTO">
+      <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
+      <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USRXCON_CONDICION" Association="Model.Store.FK_USRXCON_CONDICION">
+      <End Role="CONDICION" EntitySet="CONDICION" />
+      <End Role="USUARIOXCONDICION" EntitySet="USUARIOXCONDICION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USRXCON_USR" Association="Model.Store.FK_USRXCON_USR">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOXCONDICION" EntitySet="USUARIOXCONDICION" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BUSQUEDAS">
+    <Key>
+      <PropertyRef Name="ID_BUSQUEDA" />
+    </Key>
+    <Property Name="ID_BUSQUEDA" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="int" />
+    <Property Name="FECHA_HORA" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BUSQUEDAXCOMERCIOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_BUSQUEDA" Type="int" Nullable="false" />
+    <Property Name="ID_COMERCIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BUSQUEDAXPRODUCTOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_BUSQUEDA" Type="int" Nullable="false" />
+    <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMERCIOS">
+    <Key>
+      <PropertyRef Name="ID_COMERCIO" />
+    </Key>
+    <Property Name="ID_COMERCIO" Type="int" Nullable="false" />
+    <Property Name="ID_TIPO" Type="numeric" Precision="2" />
+    <Property Name="ID_USUARIO" Type="int" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+    <Property Name="LATITUD" Type="float" Nullable="false" />
+    <Property Name="LONGUITUD" Type="float" Nullable="false" />
+    <Property Name="TELEFONO" Type="numeric" Precision="8" />
+    <Property Name="CORREO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CONDICION">
+    <Key>
+      <PropertyRef Name="ID_CONDICION" />
+    </Key>
+    <Property Name="ID_CONDICION" Type="numeric" Nullable="false" Precision="1" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="60" />
+    <Property Name="INFORMACION_CONDICION" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="NOTICIAS">
+    <Key>
+      <PropertyRef Name="ID_NOTICIA" />
+    </Key>
+    <Property Name="ID_NOTICIA" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO_CREADOR" Type="int" />
+    <Property Name="ID_TIPO_INFORMACION" Type="numeric" Precision="3" />
+    <Property Name="TITULO" Type="varchar" MaxLength="200" />
+    <Property Name="CUERPO_NOTICIA" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="NOTICIASXCONDICION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_CONDICION" Type="numeric" Nullable="false" Precision="1" />
+    <Property Name="ID_NOTICIA" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTOS">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
+    <Property Name="ID_TIPO" Type="numeric" Precision="2" />
+    <Property Name="TIPO" Type="numeric" Precision="2" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+    <Property Name="INFORMACION_ADICIONAL" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="PRODUCTOSXCOMERCIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_COMERCIO" Type="int" Nullable="false" />
+    <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="numeric" Nullable="false" Precision="2" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="ROLESXUSUARIO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+    <Property Name="ID_ROL" Type="numeric" Nullable="false" Precision="2" />
+  </EntityType>
+  <EntityType Name="TIPO_COMERCIO">
+    <Key>
+      <PropertyRef Name="ID_TIPO" />
+    </Key>
+    <Property Name="ID_TIPO" Type="numeric" Nullable="false" Precision="2" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TIPO_INFORMACION">
+    <Key>
+      <PropertyRef Name="ID_TIPO" />
+    </Key>
+    <Property Name="ID_TIPO" Type="numeric" Nullable="false" Precision="3" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPO_PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_TIPO" />
+    </Key>
+    <Property Name="ID_TIPO" Type="numeric" Nullable="false" Precision="2" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="60" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="60" />
+    <Property Name="CORREO" Type="varchar" MaxLength="50" />
+    <Property Name="CONTRASENA" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="USUARIOXCONDICION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+    <Property Name="ID_CONDICION" Type="numeric" Nullable="false" Precision="1" />
+  </EntityType>
+  <Association Name="FK_BUSQUEDA_COMERCIO">
+    <End Role="COMERCIOS" Type="Model.Store.COMERCIOS" Multiplicity="1" />
+    <End Role="BUSQUEDAXCOMERCIOS" Type="Model.Store.BUSQUEDAXCOMERCIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMERCIOS">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXCOMERCIOS">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDA_PRODUCTO">
+    <End Role="PRODUCTOS" Type="Model.Store.PRODUCTOS" Multiplicity="1" />
+    <End Role="BUSQUEDAXPRODUCTOS" Type="Model.Store.BUSQUEDAXPRODUCTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTOS">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXPRODUCTOS">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDA_USUARIOS">
+    <End Role="USUARIOS" Type="Model.Store.USUARIOS" Multiplicity="0..1" />
+    <End Role="BUSQUEDAS" Type="Model.Store.BUSQUEDAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="BUSQUEDAS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDAXCOMERCIOS">
+    <End Role="BUSQUEDAS" Type="Model.Store.BUSQUEDAS" Multiplicity="1" />
+    <End Role="BUSQUEDAXCOMERCIOS" Type="Model.Store.BUSQUEDAXCOMERCIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BUSQUEDAS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXCOMERCIOS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUSQUEDAXPRODUCTOS">
+    <End Role="BUSQUEDAS" Type="Model.Store.BUSQUEDAS" Multiplicity="1" />
+    <End Role="BUSQUEDAXPRODUCTOS" Type="Model.Store.BUSQUEDAXPRODUCTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BUSQUEDAS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Principal>
+      <Dependent Role="BUSQUEDAXPRODUCTOS">
+        <PropertyRef Name="ID_BUSQUEDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTICIAS_USUARIO">
+    <End Role="USUARIOS" Type="Model.Store.USUARIOS" Multiplicity="0..1" />
+    <End Role="NOTICIAS" Type="Model.Store.NOTICIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="NOTICIAS">
+        <PropertyRef Name="ID_USUARIO_CREADOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTXCON_CONDICION">
+    <End Role="CONDICION" Type="Model.Store.CONDICION" Multiplicity="1" />
+    <End Role="NOTICIASXCONDICION" Type="Model.Store.NOTICIASXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Principal>
+      <Dependent Role="NOTICIASXCONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTXCON_NOTICIAS">
+    <End Role="NOTICIAS" Type="Model.Store.NOTICIAS" Multiplicity="1" />
+    <End Role="NOTICIASXCONDICION" Type="Model.Store.NOTICIASXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NOTICIAS">
+        <PropertyRef Name="ID_NOTICIA" />
+      </Principal>
+      <Dependent Role="NOTICIASXCONDICION">
+        <PropertyRef Name="ID_NOTICIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODXCOM_COM">
+    <End Role="COMERCIOS" Type="Model.Store.COMERCIOS" Multiplicity="1" />
+    <End Role="PRODUCTOSXCOMERCIO" Type="Model.Store.PRODUCTOSXCOMERCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMERCIOS">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Principal>
+      <Dependent Role="PRODUCTOSXCOMERCIO">
+        <PropertyRef Name="ID_COMERCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODXCOM_PROD">
+    <End Role="PRODUCTOS" Type="Model.Store.PRODUCTOS" Multiplicity="1" />
+    <End Role="PRODUCTOSXCOMERCIO" Type="Model.Store.PRODUCTOSXCOMERCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTOS">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="PRODUCTOSXCOMERCIO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLES_ROL">
+    <End Role="ROLES" Type="Model.Store.ROLES" Multiplicity="1" />
+    <End Role="ROLESXUSUARIO" Type="Model.Store.ROLESXUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="ROLESXUSUARIO">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLES_USUARIOS">
+    <End Role="USUARIOS" Type="Model.Store.USUARIOS" Multiplicity="1" />
+    <End Role="ROLESXUSUARIO" Type="Model.Store.ROLESXUSUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="ROLESXUSUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_COMERCIO">
+    <End Role="TIPO_COMERCIO" Type="Model.Store.TIPO_COMERCIO" Multiplicity="0..1" />
+    <End Role="COMERCIOS" Type="Model.Store.COMERCIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_COMERCIO">
+        <PropertyRef Name="ID_TIPO" />
+      </Principal>
+      <Dependent Role="COMERCIOS">
+        <PropertyRef Name="ID_TIPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_INF">
+    <End Role="TIPO_INFORMACION" Type="Model.Store.TIPO_INFORMACION" Multiplicity="0..1" />
+    <End Role="NOTICIAS" Type="Model.Store.NOTICIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_INFORMACION">
+        <PropertyRef Name="ID_TIPO" />
+      </Principal>
+      <Dependent Role="NOTICIAS">
+        <PropertyRef Name="ID_TIPO_INFORMACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO_PRODUCTO">
+    <End Role="TIPO_PRODUCTO" Type="Model.Store.TIPO_PRODUCTO" Multiplicity="0..1" />
+    <End Role="PRODUCTOS" Type="Model.Store.PRODUCTOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PRODUCTO">
+        <PropertyRef Name="ID_TIPO" />
+      </Principal>
+      <Dependent Role="PRODUCTOS">
+        <PropertyRef Name="ID_TIPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USRXCON_CONDICION">
+    <End Role="CONDICION" Type="Model.Store.CONDICION" Multiplicity="1" />
+    <End Role="USUARIOXCONDICION" Type="Model.Store.USUARIOXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Principal>
+      <Dependent Role="USUARIOXCONDICION">
+        <PropertyRef Name="ID_CONDICION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USRXCON_USR">
+    <End Role="USUARIOS" Type="Model.Store.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOXCONDICION" Type="Model.Store.USUARIOXCONDICION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIOXCONDICION">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

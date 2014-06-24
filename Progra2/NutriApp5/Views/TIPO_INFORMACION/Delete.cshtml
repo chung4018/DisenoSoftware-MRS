@@ -1,0 +1,26 @@
+@model NutriApp5.Models.TIPO_INFORMACION
+
+@{
+    ViewBag.Title = "Eliminar información";
+}
+
+<h2>Eliminar tipo de información</h2>
+
+<h3>Desea eliminar esta información?</h3>
+<fieldset>
+    <legend>TIPO DE INFORMACION</legend>
+    <div style="text-align:left; margin-left:25px;">
+        <div class="display-label">NOMBRE: @Model.NOMBRE</div>
+
+        <div class="display-label">NOTICIAS: @(Model.NOTICIAS == null ? "None" : Model.NOTICIAS.Count.ToString())</div>
+
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

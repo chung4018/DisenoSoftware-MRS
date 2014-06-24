@@ -1,0 +1,26 @@
+@model NutriApp5.Models.CONDICION
+
+@{
+    ViewBag.Title = "Crear condición...";
+}
+
+<h2>Condiciones a considerar.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>CONDICION</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear nuevo" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>
+
+

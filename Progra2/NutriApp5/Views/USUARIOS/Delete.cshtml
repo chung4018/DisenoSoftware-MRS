@@ -1,0 +1,54 @@
+@model NutriApp5.Models.USUARIOS
+
+@{
+    ViewBag.Title = "Eliminar Usuario...";
+}
+@if(Model.ID_USUARIO != NutriApp5.Models.LoginControl.Instance.idLogedUser){
+    <h2>Eliminar</h2>
+
+    <h3>Desea eliminar este usuario?</h3>
+    <fieldset>
+        <legend>USUARIOS</legend>
+        <div style ="text-align:left; margin-left:25px;">
+            <div class="display-label">NOMBRE: @Model.NOMBRE</div>
+
+            <div class="display-label">
+                APELLIDO:
+                @Model.APELLIDO
+            </div>
+
+            <div class="display-label">
+                CORREO:
+                @Model.CORREO
+            </div>
+
+            <!--<div class="display-label">CONTRASENA</div>
+        <div class="display-field">@Model.CONTRASENA</div>
+
+        <div class="display-label">BUSQUEDAS</div>
+        <div class="display-field">@(Model.BUSQUEDAS == null ? "None" : Model.BUSQUEDAS.Count.ToString())</div>
+
+        <div class="display-label">NOTICIAS</div>
+        <div class="display-field">@(Model.NOTICIAS == null ? "None" : Model.NOTICIAS.Count.ToString())</div>
+
+        <div class="display-label">ROLESXUSUARIO</div>
+        <div class="display-field">@(Model.ROLESXUSUARIO == null ? "None" : Model.ROLESXUSUARIO.Count.ToString())</div>
+
+        <div class="display-label">USUARIOXCONDICION</div>
+        <div class="display-field">@(Model.USUARIOXCONDICION == null ? "None" : Model.USUARIOXCONDICION.Count.ToString())</div>-->
+            </div>
+</fieldset>
+    using (Html.BeginForm()) {
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+            @Html.ActionLink("Atrás", "Index")
+        </p>
+    }
+}else {
+    <p>No puede eliminar su propia cuenta.</p>
+    <p>
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

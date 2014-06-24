@@ -1,0 +1,27 @@
+@model NutriApp5.Models.Usuarios.editUserViewModel
+
+@{
+    ViewBag.Title = "Crear Usuario";
+}
+
+<h2>Crear Usuario</h2>
+
+@using (Html.BeginForm("Create", "USUARIOS", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Creación de usuarios</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

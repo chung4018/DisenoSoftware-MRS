@@ -1,0 +1,46 @@
+@model IEnumerable<NutriApp5.Models.CONDICION>
+@using NutriApp5.Seguridad
+@{
+    ViewBag.Title = "Condiciones...";
+    Seguridad secureControl = Seguridad.Instance;
+}
+
+<h2>Condiciones</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table>
+    <tr>
+        
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            INFORMACION CONDICION
+        </th>
+        
+        <th>Edición de condición</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@item.INFORMACION_CONDICION
+        </td>
+        
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_CONDICION }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID_CONDICION }) |
+            @Html.ActionLink("Elminar", "Delete", new { id = item.ID_CONDICION })
+        </td>
+    </tr>
+}
+
+</table>
+
+

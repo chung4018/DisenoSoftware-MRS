@@ -1,0 +1,151 @@
+﻿.resultadoBusquedaItem {
+    border: 3px outset green;
+    border-radius: 10px;
+    font-style: italic;
+    margin: 5px;
+    width: 400px;
+}
+.nombre {
+    font-size: 19px;
+    font-weight: bold;
+}
+.showUbication {
+    cursor: pointer;
+}
+.showUbication:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.imagen_titulo {
+    position: absolute;
+    background-image: url("../Images/NutriApp/NutriApp.png");
+    background-repeat: no-repeat;
+    display: block;
+    width: 360px;
+    height: 160px;
+    text-indent: -9999px;
+}
+
+.menu_pestana {
+    clear:both;
+    float:right;
+    border-bottom: 1px solid #0AA412;
+}
+
+.raya_menu {
+    width: 80%;
+    border-bottom: 2px solid #0AA412;
+    float: right;
+    margin-top: 0.8rem;
+}
+
+.informaciones {
+    width: 200px;
+    display: inline-block;
+    border: 2.5px solid #DBA901;
+    border-radius: 5px;
+    padding: 0.7rem;
+    margin-right: 50px;
+    height: 220px;
+}
+
+.titulo-bloque {
+    margin-top: 0px;
+    font-size: 1.5rem;
+    color:#DF7401;
+}
+
+.contact {
+    border: 2.5px solid #DBA901;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding-left: 2rem;
+    width: 550px;
+    margin-right: 1rem;
+}
+
+.one, .three{
+    clear: right;
+    float: left;
+}
+
+.two {
+    clear: left;
+    float: right;
+}
+
+.boton-nutriApp {
+    border: 1px solid #848484;
+    border-radius: 3px;
+    color: #848484;
+    background-color: transparent;
+    float: right;
+    font-size: 0.8em;
+    width: 150px;
+}
+
+.boton-nutriApp:hover{
+    border: 1px solid #848484;
+    color: #ffffff;
+    background-color: #585858;
+}
+
+.etiquetas{
+    margin-top:1rem;
+}
+
+#contenedor_busqueda, #mapaComercio{
+    display:inline-table;
+}
+
+#condicionSelected, #buscarEn {
+    width: 200px;
+}
+
+
+/* formato NutriApp para las tabletas */
+@media only screen and (max-width: 850px) {
+    .raya_menu {
+        display:none;
+    }
+
+    .menu_pestana {
+        clear:both;
+        float:none;
+        border-bottom: 2px solid #0AA412;
+    }
+
+    .informaciones {
+        border-radius: 5px;
+        padding: 0.7rem;
+        height: 150px;
+        border: 2.5px solid #DBA901;
+        margin-top: 50px;
+        width: 80%;
+        margin-left:20px;
+    }
+
+    .contact {
+        border: 2.5px solid #DBA901;
+        border-radius: 5px;
+        margin-top: 1rem;
+        padding-left: 2rem;
+        width: 450px;
+        display: inline-block;
+        margin-right: 1rem;
+        clear:both;
+    }
+
+    .one, .three{
+        float: none;
+    }
+
+    .two {
+        float: none;
+    }
+
+    #contenedor_busqueda, #mapaComercio{
+        display:block;
+    }
+}

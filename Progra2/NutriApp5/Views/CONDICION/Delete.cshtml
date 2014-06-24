@@ -1,0 +1,31 @@
+@model NutriApp5.Models.CONDICION
+
+@{
+    ViewBag.Title = "Eliminar condición...";
+}
+
+<h2>Eliminar la condición.</h2>
+
+<h3>Desea eliminar esta condición?</h3>
+<fieldset>
+    <legend>CONDICION</legend>
+    <div style="text-align:left; margin-left:25px;">
+        <div class="display-label">NOMBRE: @Model.NOMBRE</div>
+
+        <div class="display-label">INFORMACION CONDICION: Model.INFORMACION_CONDICION</div>
+
+        <!--<div class="display-label">NOTICIASXCONDICION</div>
+        <div class="display-field">@(Model.NOTICIASXCONDICION == null ? "None" : Model.NOTICIASXCONDICION.Count.ToString())</div>
+
+        <div class="display-label">USUARIOXCONDICION</div>
+        <div class="display-field">@(Model.USUARIOXCONDICION == null ? "None" : Model.USUARIOXCONDICION.Count.ToString())</div>-->
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

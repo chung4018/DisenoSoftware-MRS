@@ -1,0 +1,29 @@
+@model NutriApp5.Models.BUSQUEDAXPRODUCTOS
+
+@{
+    ViewBag.Title = "Detalles de la búsqueda...";
+}
+
+<h2>Detalle de la búsqueda.</h2>
+
+<fieldset>
+    <legend>BUSQUEDA POR PRODUCTOS</legend>
+
+   <!-- <div class="display-label">ID_BUSQUEDA</div>
+    <div class="display-field">@Model.ID_BUSQUEDA</div>
+
+    <div class="display-label">ID_PRODUCTO</div>
+    <div class="display-field">@Model.ID_PRODUCTO</div>-->
+    <div style="text-align:left; margin-left:25px;">
+
+        <div class="display-label">BUSQUEDAS: @Html.DisplayTextFor(_ => Model.BUSQUEDAS).ToString()</div>
+
+        <div class="display-label">PRODUCTOS: @Html.DisplayTextFor(_ => Model.PRODUCTOS).ToString()</div>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Atrás", "Index")
+</p>
+
+

@@ -1,0 +1,26 @@
+@model NutriApp5.Models.ROLESXUSUARIO
+
+@{
+    ViewBag.Title = "Crear nuevo usurio y su rol...";
+}
+
+<h2>Crear nuevo usuario y gestión de su rol.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ROLES POR USUARIO</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear nuevo" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>
+
+

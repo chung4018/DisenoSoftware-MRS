@@ -1,0 +1,31 @@
+@model NutriApp5.Models.USUARIOXCONDICION
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar Usuario</h2>
+
+<h3>Desea eliminarlo?</h3>
+<fieldset>
+    <legend>USUARIO POR CONDICION</legend>
+    <div style="text-align:left; margin-left:25px;">
+        <!--<div class="display-label">ID_USUARIO</div>
+        <div class="display-field">@Model.ID_USUARIO</div>
+
+        <div class="display-label">ID_CONDICION</div>
+        <div class="display-field">@String.Format("{0:F}", Model.ID_CONDICION)</div>-->
+
+        <div class="display-label">CONDICION: @Html.DisplayTextFor(_ => Model.CONDICION).ToString()</div>
+
+        <div class="display-label">USUARIOS: @Html.DisplayTextFor(_ => Model.USUARIOS).ToString()</div>
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

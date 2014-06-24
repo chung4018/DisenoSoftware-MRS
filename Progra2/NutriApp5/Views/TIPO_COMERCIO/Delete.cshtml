@@ -1,0 +1,25 @@
+@model NutriApp5.Models.TIPO_COMERCIO
+
+@{
+    ViewBag.Title = "Eliminar Comercio...";
+}
+
+<h2>Eliminar un comercio.</h2>
+
+<h3>Desea eliminar este comercio?</h3>
+<fieldset>
+    <legend>TIPO_COMERCIO</legend>
+    <div style="text-align:left; margin-left:25px;">
+        <div class="display-label">NOMBRE: @Model.NOMBRE</div>
+
+        <div class="display-label">COMERCIOS: @(Model.COMERCIOS == null ? "None" : Model.COMERCIOS.Count.ToString())</div>
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" />
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

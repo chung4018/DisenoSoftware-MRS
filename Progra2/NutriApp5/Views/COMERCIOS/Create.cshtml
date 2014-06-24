@@ -1,0 +1,26 @@
+@model NutriApp5.Models.createEditComercios
+
+@{
+    ViewBag.Title = "Nuevo comercio...";
+}
+
+<h2>Crear nuevo comercio.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>COMERCIOS</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear nuevo" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>
+
+

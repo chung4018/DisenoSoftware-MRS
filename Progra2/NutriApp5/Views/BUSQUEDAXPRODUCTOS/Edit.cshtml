@@ -1,0 +1,25 @@
+@model NutriApp5.Models.BUSQUEDAXPRODUCTOS
+
+@{
+    ViewBag.Title = "Editar búsqueda...";
+}
+
+<h2>Editar</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>BUSQUEDA POR PRODUCTOS</legend>
+
+        @Html.HiddenFor(model => model.ID)
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>

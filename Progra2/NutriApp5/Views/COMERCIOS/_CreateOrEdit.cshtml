@@ -1,0 +1,59 @@
+@model NutriApp5.Models.createEditComercios
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="~/Scripts/GoogleMapsFunctions/index.js" type="text/javascript"></script>
+
+<input id="longitudActual" type="hidden" />
+<input id="latitudActual" type="hidden" />
+@Html.Label("Seleccione la posicion geográfica")
+<div id="mapa" style="width: 500px; height: 400px"></div>
+<div class="editor-label">
+    @Html.HiddenFor(model => model.ID_TIPO)
+</div>
+
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NOMBRE)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NOMBRE)
+    @Html.ValidationMessageFor(model => model.NOMBRE)
+</div>
+<div class="editor-field">
+    @Html.LabelFor(x => x.selectedUser)
+    @Html.DropDownListFor(x => x.selectedUser, Model.AllUSERS)
+</div>
+<div class="editor-field">
+    @Html.LabelFor(x => x.SelectedPRODUCTOS)
+    @Html.ListBoxFor(x => x.SelectedPRODUCTOS, Model.AllPRODUCTOS)
+</div>
+
+
+<div class="editor-field">
+    @Html.HiddenFor(model => model.LATITUD)
+   
+</div>
+<div class="editor-field">
+    @Html.HiddenFor(model => model.LONGUITUD)
+   
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TELEFONO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TELEFONO)
+    @Html.ValidationMessageFor(model => model.TELEFONO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.CORREO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CORREO)
+    @Html.ValidationMessageFor(model => model.CORREO)
+</div>
+

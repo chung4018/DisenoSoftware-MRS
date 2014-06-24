@@ -1,0 +1,26 @@
+@model NutriApp5.Models.TIPO_PRODUCTO
+
+@{
+    ViewBag.Title = "Crear producto...";
+}
+
+<h2>Registre un nuevo producto en la base de datos.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>TIPO_PRODUCTO</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>
+
+

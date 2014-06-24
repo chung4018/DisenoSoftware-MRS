@@ -1,0 +1,26 @@
+@model NutriApp5.Models.BUSQUEDAS
+
+@{
+    ViewBag.Title = "Crear búsqueda...";
+}
+
+<h2>Realizar una nueva búsqueda.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>BUSQUEDAS</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Crear búsqueda" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

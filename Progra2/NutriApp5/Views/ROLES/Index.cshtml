@@ -1,0 +1,43 @@
+@model IEnumerable<NutriApp5.Models.ROLES>
+
+@{
+    ViewBag.Title = "Gestión de roles...";
+}
+
+<h2>Gestión y creación de los nuevos roles.</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table>
+    <tr>
+        
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            ROLES POR USUARIO
+        </th>
+        <th>Edición del rol</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@(item.ROLESXUSUARIO == null ? "None" : item.ROLESXUSUARIO.Count.ToString())
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_ROL }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID_ROL }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_ROL })
+        </td>
+    </tr>
+}
+
+</table>
+
+

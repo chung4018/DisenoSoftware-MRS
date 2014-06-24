@@ -1,0 +1,31 @@
+@model NutriApp5.Models.BUSQUEDAXCOMERCIOS
+
+@{
+    ViewBag.Title = "Eliminar búsqueda...";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Desea eliminar esta búsqueda?</h3>
+<fieldset>
+    <legend>BUSQUEDA POR COMERCIOS</legend>
+    <div style="text-align:left; margin-left:25px;">
+        <!--<div class="display-label">ID_BUSQUEDA</div>
+        <div class="display-field">@Model.ID_BUSQUEDA</div>
+
+        <div class="display-label">ID_COMERCIO</div>
+        <div class="display-field">@Model.ID_COMERCIO</div>-->
+
+        <div class="display-label">BUSQUEDAS: @Html.DisplayTextFor(_ => Model.BUSQUEDAS).ToString()</div>
+
+        <div class="display-label">COMERCIOS: @Html.DisplayTextFor(_ => Model.COMERCIOS).ToString()</div>
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

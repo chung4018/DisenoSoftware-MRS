@@ -1,0 +1,32 @@
+@model NutriApp5.Models.PRODUCTOSXCOMERCIO
+
+@{
+    ViewBag.Title = "Eliminar producto del comercio...";
+}
+
+<h2>Eliminar productos del comercio.</h2>
+
+<h3>Desea eliminar el producto del comercio?</h3>
+<fieldset>
+    <legend>PRODUCTOS POR COMERCIO</legend>
+    <div style="text-align:left; margin-left:25px;">
+
+        <!--<div class="display-label">ID_COMERCIO</div>
+        <div class="display-field">@Model.ID_COMERCIO</div>
+
+        <div class="display-label">ID_PRODUCTO</div>
+        <div class="display-field">@Model.ID_PRODUCTO</div>-->
+
+        <div class="display-label">COMERCIOS: @Html.DisplayTextFor(_ => Model.COMERCIOS).ToString()</div>
+
+        <div class="display-label">PRODUCTOS: @Html.DisplayTextFor(_ => Model.PRODUCTOS).ToString()</div>
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" />
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+
