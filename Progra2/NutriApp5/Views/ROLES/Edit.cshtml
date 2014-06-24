@@ -1,0 +1,25 @@
+@model NutriApp5.Models.ROLES
+
+@{
+    ViewBag.Title = "Editar rol...";
+}
+
+<h2>Editar rol de usuario.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ROLES</legend>
+
+        @Html.HiddenFor(model => model.ID_ROL)
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Guardar cambios" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

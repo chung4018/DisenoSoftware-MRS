@@ -1,0 +1,26 @@
+@model NutriApp5.Models.TIPO_PRODUCTO
+
+@{
+    ViewBag.Title = "Eliminar producto...";
+}
+
+<h2>Eliminar los productos de la base de datos.</h2>
+
+<h3>Desea eliminar este producto de la base de datos?</h3>
+<fieldset>
+    <legend>TIPO_PRODUCTO</legend>
+
+    <div class="display-label">NOMBRE</div>
+    <div class="display-field">@Model.NOMBRE</div>
+
+    <div class="display-label">PRODUCTOS</div>
+    <div class="display-field">@(Model.PRODUCTOS == null ? "None" : Model.PRODUCTOS.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

@@ -1,0 +1,96 @@
+@model IEnumerable<NutriApp5.Models.COMERCIOS>
+
+@{
+    ViewBag.Title = "Comercio...";
+    NutriApp5.Seguridad.Seguridad secureControl = NutriApp5.Seguridad.Seguridad.Instance;
+    
+}
+
+<h2>Inicio</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <!--<th>
+            ID_TIPO
+        </th>
+        <th>
+            ID_USUARIO
+        </th>-->
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            LATITUD
+        </th>
+        <th>
+            LONGUITUD
+        </th>
+        <th>
+            TELEFONO
+        </th>
+        <th>
+            CORREO
+        </th>
+        <!--<th>
+            BUSQUEDAXCOMERCIOS
+        </th>
+        <th>
+            PRODUCTOSXCOMERCIO
+        </th>-->
+        <th>
+            TIPO_COMERCIO
+        </th>
+    </tr>
+@if(secureControl.isStoreAdmin()){
+    ICollection<int> comerciosAdmin = secureControl.getStoresAdmin(NutriApp5.Models.LoginControl.Instance.idLogedUser);
+    foreach (var item in Model) {
+        
+        if(secureControl.isAdminOf(item.ID_COMERCIO) || secureControl.isAdmin()){
+            <tr>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_COMERCIO }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_COMERCIO }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_COMERCIO })
+                </td>
+                <!--<td>
+			        @String.Format("{0:F}", item.ID_TIPO)
+                </td>
+                <td>
+			        @item.ID_USUARIO
+                </td>-->
+                <td>
+			        @item.NOMBRE
+                </td>
+                <td>
+			        @String.Format("{0:F}", item.LATITUD)
+                </td>
+                <td>
+			        @String.Format("{0:F}", item.LONGUITUD)
+                </td>
+                <td>
+			        @String.Format("{0:F}", item.TELEFONO)
+                </td>
+                <td>
+			        @item.CORREO
+                </td>
+                <!--<td>
+			        @(item.BUSQUEDAXCOMERCIOS == null ? "None" : item.BUSQUEDAXCOMERCIOS.Count.ToString())
+                </td>
+                <td>
+			        @(item.PRODUCTOSXCOMERCIO == null ? "None" : item.PRODUCTOSXCOMERCIO.Count.ToString())
+                </td>-->
+                <td>
+			        @Html.DisplayTextFor(_ => item.TIPO_COMERCIO).ToString()
+                </td>
+            </tr>
+        }
+    }
+}
+
+</table>
+
+

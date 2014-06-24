@@ -1,0 +1,41 @@
+@model IEnumerable<NutriApp5.Models.TIPO_COMERCIO>
+
+@{
+    ViewBag.Title = "Comercio...";
+}
+
+<h2>Crea su nuevo comercio y publica en la red de búsquedas de los comercios.</h2>
+
+<p>
+    @Html.ActionLink("Crear Comercio", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            COMERCIOS
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_TIPO }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_TIPO }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_TIPO })
+        </td>
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@(item.COMERCIOS == null ? "None" : item.COMERCIOS.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

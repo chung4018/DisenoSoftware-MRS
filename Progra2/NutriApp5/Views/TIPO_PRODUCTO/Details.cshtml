@@ -1,0 +1,23 @@
+@model NutriApp5.Models.TIPO_PRODUCTO
+
+@{
+    ViewBag.Title = "Detalles del producto...";
+}
+
+<h2>Detalles de los productos.</h2>
+
+<fieldset>
+    <legend>TIPO_PRODUCTO</legend>
+
+    <div class="display-label">NOMBRE</div>
+    <div class="display-field">@Model.NOMBRE</div>
+
+    <div class="display-label">PRODUCTOS</div>
+    <div class="display-field">@(Model.PRODUCTOS == null ? "None" : Model.PRODUCTOS.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.ID_TIPO }) |
+    @Html.ActionLink("Atrás", "Index")
+</p>
+
+

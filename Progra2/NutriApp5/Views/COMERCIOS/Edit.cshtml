@@ -1,0 +1,26 @@
+@model NutriApp5.Models.createEditComercios
+
+@{
+    ViewBag.Title = "Editar comercio...";
+}
+<script src="~/Scripts/GoogleMapsFunctions/editarComercio.js" type="text/javascript"></script>
+
+<h2>Editar.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>COMERCIOS</legend>
+
+        @Html.HiddenFor(model => model.ID_COMERCIO)
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input class="boton-nutriApp" type="submit" value="Guardar cambios" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atrás", "Index")
+</div>

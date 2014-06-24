@@ -1,0 +1,32 @@
+@model NutriApp5.Models.ROLESXUSUARIO
+
+@{
+    ViewBag.Title = "Eliminar usuario y su rol";
+}
+
+<h2>Eliminar un usuario y su rol correspondiente.</h2>
+
+<h3>Desea borrar este rol de usuario?</h3>
+<fieldset>
+    <legend>ROLESXUSUARIO</legend>
+
+    <div class="display-label">ID_USUARIO</div>
+    <div class="display-field">@Model.ID_USUARIO</div>
+
+    <div class="display-label">ID_ROL</div>
+    <div class="display-field">@String.Format("{0:F}", Model.ID_ROL)</div>
+
+    <div class="display-label">ROLES</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ROLES).ToString()</div>
+
+    <div class="display-label">USUARIOS</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.USUARIOS).ToString()</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input class="boton-nutriApp" type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Atrás", "Index")
+    </p>
+}
+
+

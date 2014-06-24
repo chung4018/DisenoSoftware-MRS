@@ -1,0 +1,72 @@
+@model IEnumerable<NutriApp5.Models.PRODUCTOS>
+
+@{
+    ViewBag.Title = "Crear Producto...";
+    
+}
+
+<h2>Gestión de productos.</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ID_TIPO
+        </th>
+        <th>
+            TIPO
+        </th>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            INFORMACION_ADICIONAL
+        </th>
+        <th>
+            BUSQUEDAXPRODUCTOS
+        </th>
+        <th>
+            PRODUCTOSXCOMERCIO
+        </th>
+        <th>
+            TIPO_PRODUCTO
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_PRODUCTO }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_PRODUCTO }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_PRODUCTO })
+        </td>
+        <td>
+			@String.Format("{0:F}", item.ID_TIPO)
+        </td>
+        <td>
+			@String.Format("{0:F}", item.TIPO)
+        </td>
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@item.INFORMACION_ADICIONAL
+        </td>
+        <td>
+			@(item.BUSQUEDAXPRODUCTOS == null ? "None" : item.BUSQUEDAXPRODUCTOS.Count.ToString())
+        </td>
+        <td>
+			@(item.PRODUCTOSXCOMERCIO == null ? "None" : item.PRODUCTOSXCOMERCIO.Count.ToString())
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.TIPO_PRODUCTO).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+
